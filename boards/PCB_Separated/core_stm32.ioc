@@ -1,0 +1,11 @@
+#MicroXplorer Configuration settings - do not modify
+#Sun Mar 09 10:24:22 WIB 2014
+File.Version=1
+KeepUserPlacement=true
+Mcu.Family=STM32F1
+Mcu.IPNb=0
+Mcu.Name=STM32F103R(8-B)Tx
+Mcu.Package=LQFP64
+Mcu.Pin0=PB2
+Mcu.PinsNb=1
+PB2.Signal=GPIO_Input
