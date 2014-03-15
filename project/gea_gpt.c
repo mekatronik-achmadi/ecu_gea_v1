@@ -7,28 +7,28 @@ static void gpt1cb(GPTDriver *gptp) {
 
 static void gpt2cb(GPTDriver *gptp) {
   (void)gptp;
-  
+  inj_out();
 }
 
 static void gpt4cb(GPTDriver *gptp) {
   (void)gptp;
-  
+  ign_out();
 }
 
 static const GPTConfig gpt1cfg = {
-  10000,    /* 10kHz timer clock.*/
+  F_GPT,    /* 10kHz timer clock.*/
   gpt1cb,   /* Timer callback.*/
   0
 };
 
 static const GPTConfig gpt2cfg = {
-  10000,    /* 10kHz timer clock.*/
+  F_GPT,    /* 10kHz timer clock.*/
   gpt2cb,   /* Timer callback.*/
   0
 };
 
 static const GPTConfig gpt4cfg = {
-  10000,    /* 10kHz timer clock.*/
+  F_GPT,    /* 10kHz timer clock.*/
   gpt4cb,   /* Timer callback.*/
   0
 };
