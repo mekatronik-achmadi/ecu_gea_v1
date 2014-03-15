@@ -81,7 +81,7 @@ CSRC = $(PORTSRC) \
        $(CHIBIOS)/os/various/shell.c \
        $(CHIBIOS)/os/various/chprintf.c \
        $(CHIBIOS)/os/various/memstreams.c \
-       main.c gea_shell.c gea_icu.c gea_adc.c gea_pal.c gea_sys.c
+       main.c gea_shell.c gea_icu.c gea_adc.c gea_pal.c gea_gpt.c gea_sys.c
        
 # C++ sources that can be compiled in ARM or THUMB mode depending on the global
 # setting.

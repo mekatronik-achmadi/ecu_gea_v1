@@ -21,18 +21,14 @@ int main(void) {
   Pal_Setup();
   Icu_Setup();
   Adc_Setup();
-
-// palSetPadMode(GPIOA,led,P AL_MODE_OUTPUT_PUSHPULL);
+  Gpt_Setup();
   
   /*
    * Normal main() thread activity, in this demo it does nothing except
    * sleeping in a loop and check the button state.
    */
   while (TRUE) {
-    
-//     Shell_Setup(); /* create shell */
-//     no_pulse;
-//     chThdSleepMilliseconds(500);
-    
+    Shell_Setup(); /* create shell */
+    chThdSleepMilliseconds(500);
   }
 }

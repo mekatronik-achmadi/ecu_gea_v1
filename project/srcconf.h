@@ -21,6 +21,7 @@
 #include "gea_adc.h"
 #include "gea_sys.h"
 #include "gea_pal.h"
+#include "gea_gpt.h"
 
 #endif
 
