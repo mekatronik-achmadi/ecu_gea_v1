@@ -13,13 +13,14 @@ static msg_t ovfThread(void *arg) {
   while (TRUE) {
     v_ovf++;
     if(v_ovf==5){
-      engine_ovf();
+//       engine_ovf();
       v_ovf=0;
     }
+    
     v_data++;
     if(v_data==5){
       v_data=0;
-      chprintf((BaseSequentialStream *)&SD1, "rpm = %6i tps= %4i \r\n",rpm,adc_tps);
+//       chprintf((BaseSequentialStream *)&SD1, "rpm = %6i tps= %4i \r\n",rpm,adc_tps);
     }
     chThdSleepMilliseconds(100);
   }
@@ -29,10 +30,9 @@ static msg_t ovfThread(void *arg) {
 static void icuperiodcb(ICUDriver *icup) {
   last_period = icuGetPeriod(icup);
   v_ovf=0;
-  engine_calc();
-  inj_calc();
-  ign_calc();
-  engine_set();
+//   inj_calc();
+//   ign_calc();
+//   engine_calc();
 }
 
 

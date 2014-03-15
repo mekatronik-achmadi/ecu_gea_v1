@@ -2,17 +2,6 @@
 
 Thread *shelltp = NULL;
 
-static void cmd_num(BaseSequentialStream *chp, int argc, char *argv[]) {
-  (void)argv;
-  int num=0;
-  if (argc != 1) {
-    chprintf(chp, "Usage: nomer [nomer] piye to bos?\r\n");
-    return;
-  }
-  num = atoi(argv[0]);
-  chprintf(chp,"your number is %4i\r\n",num);
-}
-
 static void cmd_start(BaseSequentialStream *chp, int argc, char *argv[]) {
   (void)argv;
   if(argc>0){
@@ -22,23 +11,40 @@ static void cmd_start(BaseSequentialStream *chp, int argc, char *argv[]) {
   chprintf(chp,"Serial Shell Connected!\r\n");
 }
 
-static void cmd_mem(BaseSequentialStream *chp, int argc, char *argv[]) {
-  size_t n, size;
+static void cmd_infoOS(BaseSequentialStream *chp, int argc, char *argv[]) {
 
   (void)argv;
   if (argc > 0) {
-    chprintf(chp, "Usage: mem\r\n");
+    usage(chp, "info");
     return;
   }
-  n = chHeapStatus(NULL, &size);
-  chprintf(chp, "core free memory : %u bytes\r\n", chCoreStatus());
-  chprintf(chp, "heap fragments   : %u\r\n", n);
-  chprintf(chp, "heap free total  : %u bytes\r\n", size);
+
+  chprintf(chp, "Kernel:       %s\r\n", CH_KERNEL_VERSION);
+#ifdef CH_COMPILER_NAME
+  chprintf(chp, "Compiler:     %s\r\n", CH_COMPILER_NAME);
+#endif
+  chprintf(chp, "Architecture: %s\r\n", CH_ARCHITECTURE_NAME);
+#ifdef CH_CORE_VARIANT_NAME
+  chprintf(chp, "Core Variant: %s\r\n", CH_CORE_VARIANT_NAME);
+#endif
+#ifdef CH_PORT_INFO
+  chprintf(chp, "Port Info:    %s\r\n", CH_PORT_INFO);
+#endif
+#ifdef PLATFORM_NAME
+  chprintf(chp, "Platform:     %s\r\n", PLATFORM_NAME);
+#endif
+#ifdef BOARD_NAME
+  chprintf(chp, "Board:        %s\r\n", BOARD_NAME);
+#endif
+#ifdef __DATE__
+#ifdef __TIME__
+  chprintf(chp, "Build time:   %s%s%s\r\n", __DATE__, " - ", __TIME__);
+#endif
+#endif
 }
 
 static const ShellCommand commands[] = {
-  {"mem", cmd_mem},
-  {"num",cmd_num},
+  {"info", cmd_infoOS},
   {"ok",cmd_start},
   {NULL, NULL}
 };
@@ -55,7 +61,7 @@ void Serial_Setup(void){
   /*
    * Shell manager initialization.
    */
-//   shellInit();
+  shellInit();
 }
 
 void Shell_Setup(void){
