@@ -21,7 +21,10 @@ static const uint16_t data_rpm[7]={0,1000,2000,3000,4000,5000,6000};
 static const uint16_t ign_dur_deg=30,flow_rate=40;
 
 uint16_t inj_off_deg,inj_dur_deg,inj_dur_tick,inj_on_deg,inj_on_tick;
+float inj_vol;
 uint16_t ign_off_deg,ign_dur_tick,ign_on_deg,ign_on_tick;
+
+uint16_t rps,rot_tick,deg_rot_tick;
 
 void inj_calc(void){
 //   if(adc_tps==0){inj_start=top_tooth-2;inj_stop=top_tooth-1;}
@@ -50,8 +53,10 @@ void inj_calc(void){
 
     inj_on_deg=180-inj_dur_deg-inj_off_deg;
 
-    inj_dur_tick=(inj_dur_deg/15)*(F_GPT/rpm)*(60/24);
-    inj_on_tick=(inj_on_deg/15)*(F_GPT/rpm)*(60/24);
+    inj_dur_tick=inj_dur_deg*deg_rot_tick;
+    inj_on_tick =inj_on_deg*deg_rot_tick;
+
+    inj_vol= (float) flow_rate*inj_dur_tick/F_GPT;
     
 }
 
@@ -62,6 +67,8 @@ void ign_calc(void){
 //   else if((rpm>4000)&&(rpm<5000)){ign_start=top_tooth-6;ign_stop=top_tooth-3;}
 //   else if((rpm>5000)&&(rpm<10000)){ign_start=top_tooth-5;ign_stop=top_tooth-2;}
 //   else if(rpm>15000){ign_start=top_tooth-5;ign_stop=top_tooth-2;}
+  
+    
     int i;
     for(i=0;i<5;i++){
         if((rpm>=data_rpm[i])&&(rpm<data_rpm[i+1])){
@@ -79,8 +86,8 @@ void ign_calc(void){
 
     ign_on_deg=180-ign_dur_deg-ign_off_deg;
 
-    ign_dur_tick=(ign_dur_deg/15)*(F_GPT/rpm)*(60/24);
-    ign_on_tick=(ign_on_deg/15)*(F_GPT/rpm)*(60/24);
+    ign_dur_tick=ign_dur_deg*deg_rot_tick;
+    ign_on_tick=ign_on_deg*deg_rot_tick;
 }
 
 void engine_calc(void){
@@ -95,6 +102,11 @@ void engine_calc(void){
   else{
     frekuensi = F_ICU / last_period;
     rpm = frekuensi*60/(all_tooth+1);
+    
+    rps=rpm/60;
+    rot_tick=F_GPT/rps;
+    deg_rot_tick=rot_tick/360;
+    
     toothcount++;
     if(toothcount==all_tooth){toothcount=0;}
     if(toothcount==all_tooth+1){toothcount=1;} 
@@ -165,5 +177,5 @@ void engine_ovf(void){
 }
 
 void data_send(void){
-  chprintf((BaseSequentialStream *)&SD1, "%6i %6i %6i %6i %6i %6i %6i %6i\r\n",rpm,adc_tps,ign_dur_deg,ign_dur_tick,ign_off_deg,inj_dur_deg,inj_dur_tick,inj_off_deg);
+  chprintf((BaseSequentialStream *)&SD1, "%6i %6i %6i %6i %6i %6i %6i %6i %7.4f\r\n",rpm,adc_tps,ign_dur_deg,ign_dur_tick,ign_off_deg,inj_dur_deg,inj_dur_tick,inj_off_deg,inj_vol);
 }
