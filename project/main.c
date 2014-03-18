@@ -17,18 +17,25 @@ int main(void) {
   /*
    * Project defined HAL Setup
    */
-  Serial_Setup();
   Pal_Setup();
+  Serial_Setup();
   Icu_Setup();
   Adc_Setup();
   Gpt_Setup();
+  
   
   /*
    * Normal main() thread activity, in this demo it does nothing except
    * sleeping in a loop and check the button state.
    */
+  palSetPad(GPIOA,led);
+  
   while (TRUE) {
+    
     Shell_Setup(); /* create shell */
     chThdSleepMilliseconds(500);
-  }
+    /*
+     * this for test injector and ignitor
+     */    
+  };
 }

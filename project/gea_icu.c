@@ -17,11 +17,11 @@ static msg_t ovfThread(void *arg) {
       v_ovf=0;
     }
     
-    v_data++;
-    if(v_data==5){
-      v_data=0;
-      data_send();
-    }
+//     v_data++;
+//     if(v_data==5){
+//       v_data=0;
+//       data_send();
+//     }
     chThdSleepMilliseconds(100);
   }
   return 0;

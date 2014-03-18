@@ -1,51 +1,64 @@
 #include "srcconf.h"
 
+uint8_t datatest=0,datatest_count=0;
+
 Thread *shelltp = NULL;
 
-static void cmd_start(BaseSequentialStream *chp, int argc, char *argv[]) {
-  (void)argv;
-  if(argc>0){
-    chprintf(chp,"Serial Shell Connected!\r\n");
-    return;
-  };
-  chprintf(chp,"Serial Shell Connected!\r\n");
+static WORKING_AREA(wa_datatestThread, 128);
+static msg_t datatestThread(void *arg) {
+  (void)arg;
+  chRegSetThreadName("adc_trigger");
+  while (TRUE) {
+    if(datatest==1){
+      data_send();
+      chThdSleepMilliseconds(500);
+      datatest_count++;
+    }
+    else if(datatest==2){
+      on_inj1;
+      on_inj2;
+      on_ign1;
+      on_ign2;
+      palClearPad(GPIOA,led);
+      chThdSleepMilliseconds(500);
+      off_inj1;
+      off_inj2;
+      off_ign1;
+      off_ign2;
+      palSetPad(GPIOA,led);
+      chThdSleepMilliseconds(500);
+      datatest_count++;
+    }
+    
+    if(datatest_count==15){
+      datatest=0;
+    }
+    
+  }
+  return 0;
 }
 
-static void cmd_infoOS(BaseSequentialStream *chp, int argc, char *argv[]) {
-
+static void cmd_data(BaseSequentialStream *chp, int argc, char *argv[]) {
   (void)argv;
-  if (argc > 0) {
-    usage(chp, "info");
+  if(argc>0){
+    chprintf(chp,"data\r\n");
     return;
-  }
+  };
+  datatest=1;
+}
 
-  chprintf(chp, "Kernel:       %s\r\n", CH_KERNEL_VERSION);
-#ifdef CH_COMPILER_NAME
-  chprintf(chp, "Compiler:     %s\r\n", CH_COMPILER_NAME);
-#endif
-  chprintf(chp, "Architecture: %s\r\n", CH_ARCHITECTURE_NAME);
-#ifdef CH_CORE_VARIANT_NAME
-  chprintf(chp, "Core Variant: %s\r\n", CH_CORE_VARIANT_NAME);
-#endif
-#ifdef CH_PORT_INFO
-  chprintf(chp, "Port Info:    %s\r\n", CH_PORT_INFO);
-#endif
-#ifdef PLATFORM_NAME
-  chprintf(chp, "Platform:     %s\r\n", PLATFORM_NAME);
-#endif
-#ifdef BOARD_NAME
-  chprintf(chp, "Board:        %s\r\n", BOARD_NAME);
-#endif
-#ifdef __DATE__
-#ifdef __TIME__
-  chprintf(chp, "Build time:   %s%s%s\r\n", __DATE__, " - ", __TIME__);
-#endif
-#endif
+static void cmd_test(BaseSequentialStream *chp, int argc, char *argv[]) {
+  (void)argv;
+  if(argc>0){
+    chprintf(chp,"data\r\n");
+    return;
+  };
+  datatest=2;
 }
 
 static const ShellCommand commands[] = {
-  {"info", cmd_infoOS},
-  {"ok",cmd_start},
+  {"data",cmd_data},
+  {"test",cmd_test},
   {NULL, NULL}
 };
 
@@ -62,6 +75,7 @@ void Serial_Setup(void){
    * Shell manager initialization.
    */
   shellInit();
+  chThdCreateStatic(wa_datatestThread, sizeof(wa_datatestThread), NORMALPRIO, datatestThread, NULL);
 }
 
 void Shell_Setup(void){
