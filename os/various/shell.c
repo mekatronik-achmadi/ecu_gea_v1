@@ -67,37 +67,37 @@ static void list_commands(BaseSequentialStream *chp, const ShellCommand *scp) {
   }
 }
 
-// static void cmd_info(BaseSequentialStream *chp, int argc, char *argv[]) {
-// 
-//   (void)argv;
-//   if (argc > 0) {
-//     usage(chp, "info");
-//     return;
-//   }
-// 
-//   chprintf(chp, "Kernel:       %s\r\n", CH_KERNEL_VERSION);
-// #ifdef CH_COMPILER_NAME
-//   chprintf(chp, "Compiler:     %s\r\n", CH_COMPILER_NAME);
-// #endif
-//   chprintf(chp, "Architecture: %s\r\n", CH_ARCHITECTURE_NAME);
-// #ifdef CH_CORE_VARIANT_NAME
-//   chprintf(chp, "Core Variant: %s\r\n", CH_CORE_VARIANT_NAME);
-// #endif
-// #ifdef CH_PORT_INFO
-//   chprintf(chp, "Port Info:    %s\r\n", CH_PORT_INFO);
-// #endif
-// #ifdef PLATFORM_NAME
-//   chprintf(chp, "Platform:     %s\r\n", PLATFORM_NAME);
-// #endif
-// #ifdef BOARD_NAME
-//   chprintf(chp, "Board:        %s\r\n", BOARD_NAME);
-// #endif
-// #ifdef __DATE__
-// #ifdef __TIME__
-//   chprintf(chp, "Build time:   %s%s%s\r\n", __DATE__, " - ", __TIME__);
-// #endif
-// #endif
-// }
+static void cmd_info(BaseSequentialStream *chp, int argc, char *argv[]) {
+
+  (void)argv;
+  if (argc > 0) {
+    usage(chp, "info");
+    return;
+  }
+
+  chprintf(chp, "Kernel:       %s\r\n", CH_KERNEL_VERSION);
+#ifdef CH_COMPILER_NAME
+  chprintf(chp, "Compiler:     %s\r\n", CH_COMPILER_NAME);
+#endif
+  chprintf(chp, "Architecture: %s\r\n", CH_ARCHITECTURE_NAME);
+#ifdef CH_CORE_VARIANT_NAME
+  chprintf(chp, "Core Variant: %s\r\n", CH_CORE_VARIANT_NAME);
+#endif
+#ifdef CH_PORT_INFO
+  chprintf(chp, "Port Info:    %s\r\n", CH_PORT_INFO);
+#endif
+#ifdef PLATFORM_NAME
+  chprintf(chp, "Platform:     %s\r\n", PLATFORM_NAME);
+#endif
+#ifdef BOARD_NAME
+  chprintf(chp, "Board:        %s\r\n", BOARD_NAME);
+#endif
+#ifdef __DATE__
+#ifdef __TIME__
+  chprintf(chp, "Build time:   %s%s%s\r\n", __DATE__, " - ", __TIME__);
+#endif
+#endif
+}
 
 // static void cmd_systime(BaseSequentialStream *chp, int argc, char *argv[]) {
 // 
@@ -113,7 +113,7 @@ static void list_commands(BaseSequentialStream *chp, const ShellCommand *scp) {
  * @brief   Array of the default commands.
  */
 static ShellCommand local_commands[] = {
-//   {"info", cmd_info},
+  {"info", cmd_info},
 //   {"systime", cmd_systime},
   {NULL, NULL}
 };
