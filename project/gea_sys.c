@@ -166,15 +166,25 @@ void ign_out(void){
 
 void engine_ovf(void){
   
-  no_pulse;
-  frekuensi = 0;
-  rpm=0;
-  misstooth=0;
-
-  off_inj1;
-  off_inj2;
-  off_ign1;
-  off_ign2;
+//   no_pulse;
+//   frekuensi = 0;
+//   rpm=0;
+//   misstooth=0;
+// 
+//   off_inj1;
+//   off_inj2;
+//   off_ign1;
+//   off_ign2;
+  
+  /*
+   * for test purpos only. Comment above if below used
+   */
+   
+  palTogglePad(GPIOA,led);
+  palTogglePad(GPIOC,inj_1);
+  palTogglePad(GPIOC,inj_2);
+  palTogglePad(GPIOC,ign_1);
+  palTogglePad(GPIOC,ign_2);
 }
 
 void data_send(void){
