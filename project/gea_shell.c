@@ -1,5 +1,7 @@
 #include "srcconf.h"
 
+uint8_t stt_run=0;
+
 Thread *shelltp = NULL;
 
 static void cmd_data(BaseSequentialStream *chp, int argc, char *argv[]) {
@@ -13,29 +15,36 @@ static void cmd_data(BaseSequentialStream *chp, int argc, char *argv[]) {
     data_send();
     chThdSleepMilliseconds(500);
   };
-  chprintf((BaseSequentialStream *)&SD1,"data finished");
+  chprintf((BaseSequentialStream *)&SD1,"data finished\r\n");
+  return;
 }
 
 static void cmd_test(BaseSequentialStream *chp, int argc, char *argv[]) {
   (void)argv;
   int i;
   if(argc>0){
-    chprintf(chp,"data\r\n");
+    chprintf(chp,"test\r\n");
     return;
   };
-  for(i=0;i<15;i++){
-    on_inj1;
-    on_inj2;
-    on_ign1;
-    on_ign2;
-    chThdSleepMilliseconds(25);
-    off_inj1;
-    off_inj2;
-    off_ign1;
-    off_ign2;
-    chThdSleepMilliseconds(25);
-  };
-  chprintf((BaseSequentialStream *)&SD1,"test finished");
+  if(stt_run==0){
+    for(i=0;i<15;i++){
+      on_inj1;
+      on_inj2;
+      on_ign1;
+      on_ign2;
+      chThdSleepMilliseconds(25);
+      off_inj1;
+      off_inj2;
+      off_ign1;
+      off_ign2;
+      chThdSleepMilliseconds(25);
+    };
+  }
+  else{
+    chprintf((BaseSequentialStream *)&SD1,"test cannot run during running conditions\r\n");
+  }
+  chprintf((BaseSequentialStream *)&SD1,"test finished\r\n");
+  return;
 }
 
 static const ShellCommand commands[] = {

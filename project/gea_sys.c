@@ -1,7 +1,6 @@
 #include "srcconf.h"
 
-// uint8_t inj_start,inj_stop;
-// uint8_t ign_start,ign_stop;
+extern uint8_t stt_run;
 
 extern adcsample_t adc_tps;
 
@@ -22,18 +21,11 @@ static const uint16_t data_rpm[7]={0,1000,2000,3000,4000,5000,6000};
 static const uint16_t ign_dur_deg=30,flow_rate=40;
 
 uint16_t inj_off_deg,inj_dur_deg,inj_dur_tick,inj_on_deg,inj_on_tick;
-float inj_vol;
 uint16_t ign_off_deg,ign_dur_tick,ign_on_deg,ign_on_tick;
 
 uint16_t rps,rot_tick,deg_rot_tick;
 
 void inj_calc(void){
-//   if(adc_tps==0){inj_start=top_tooth-2;inj_stop=top_tooth-1;}
-//   else if((adc_tps>0)&&(adc_tps<250)){inj_start=top_tooth-3;inj_stop=top_tooth-1;}
-//   else if((adc_tps>=250)&&(adc_tps<500)){inj_start=top_tooth-5;inj_stop=top_tooth-1;}
-//   else if((adc_tps>=750)&&(adc_tps<1000)){inj_start=top_tooth-7;inj_stop=top_tooth-1;}
-//   else if((adc_tps>=1000)&&(adc_tps<1250)){inj_start=0;inj_stop=top_tooth-1;}
-//   else if(adc_tps>=1250){inj_start=22;inj_stop=top_tooth-1;}
     int i;
     for(i=0;i<5;i++){
         if((adc_tps>=data_tps[i])&&(adc_tps<data_tps[i+1])){
@@ -56,20 +48,10 @@ void inj_calc(void){
 
     inj_dur_tick=inj_dur_deg*deg_rot_tick;
     inj_on_tick =inj_on_deg*deg_rot_tick;
-
-    inj_vol= (float) flow_rate*inj_dur_tick/F_GPT;
     
 }
 
 void ign_calc(void){
-//   if((rpm>0)&&(rpm<2000)){ign_start=top_tooth-4;ign_stop=top_tooth-1;} 
-//   else if((rpm>2000)&&(rpm<3000)){ign_start=top_tooth-5;ign_stop=top_tooth-2;}
-//   else if((rpm>3000)&&(rpm<4000)){ign_start=top_tooth-5;ign_stop=top_tooth-2;}
-//   else if((rpm>4000)&&(rpm<5000)){ign_start=top_tooth-6;ign_stop=top_tooth-3;}
-//   else if((rpm>5000)&&(rpm<10000)){ign_start=top_tooth-5;ign_stop=top_tooth-2;}
-//   else if(rpm>15000){ign_start=top_tooth-5;ign_stop=top_tooth-2;}
-  
-    
     int i;
     for(i=0;i<5;i++){
         if((rpm>=data_rpm[i])&&(rpm<data_rpm[i+1])){
@@ -92,6 +74,7 @@ void ign_calc(void){
 }
 
 void engine_calc(void){
+  stt_run=1;
   if(last_period > 0){
     misstooth = (prev_last_period*100) / last_period;
     prev_last_period =  last_period; 
@@ -115,11 +98,6 @@ void engine_calc(void){
 }
 
 void engine_set(void){
-//     if(toothcount==ign_start){on_ign1;on_ign2;}
-//     if(toothcount==ign_stop){off_ign1;off_ign2;}
-//   
-//     if(toothcount==inj_start){on_inj1;on_inj2;}
-//     if(toothcount==inj_stop){off_inj1;off_inj2;}
   if(toothcount==bottom_tooth){
     inj_phase=0;
     ign_phase=0;
@@ -166,27 +144,27 @@ void ign_out(void){
 
 void engine_ovf(void){
   
-//   no_pulse;
-//   frekuensi = 0;
-//   rpm=0;
-//   misstooth=0;
-// 
-//   off_inj1;
-//   off_inj2;
-//   off_ign1;
-//   off_ign2;
-  
+  no_pulse;
+  frekuensi = 0;
+  rpm=0;
+  misstooth=0;
+
+  off_inj1;
+  off_inj2;
+  off_ign1;
+  off_ign2;
+  stt_run=0;
   /*
    * for test purpos only. Comment above if below used
    */
    
-  palTogglePad(GPIOA,led);
-  palTogglePad(GPIOC,inj_1);
-  palTogglePad(GPIOC,inj_2);
-  palTogglePad(GPIOC,ign_1);
-  palTogglePad(GPIOC,ign_2);
+//   palTogglePad(GPIOA,led);
+//   palTogglePad(GPIOC,inj_1);
+//   palTogglePad(GPIOC,inj_2);
+//   palTogglePad(GPIOC,ign_1);
+//   palTogglePad(GPIOC,ign_2);
 }
 
 void data_send(void){
-  chprintf((BaseSequentialStream *)&SD1, "%6i %6i %6i %6i %6i %6i %6i %6i %7.4f\r\n",rpm,adc_tps,ign_dur_deg,ign_dur_tick,ign_off_deg,inj_dur_deg,inj_dur_tick,inj_off_deg,inj_vol);
+  chprintf((BaseSequentialStream *)&SD1, "%6i %6i %6i %6i %6i %6i %6i %6i\r\n",rpm,adc_tps,ign_dur_deg,ign_dur_tick,ign_off_deg,inj_dur_deg,inj_dur_tick,inj_off_deg);
 }

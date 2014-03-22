@@ -4,7 +4,7 @@ icucnt_t last_period;
 extern adcsample_t adc_tps;
 extern icucnt_t rpm;
 
-uint8_t v_ovf,v_data;
+uint8_t v_ovf;
 
 static WORKING_AREA(wa_ovfThread, 128);
 static msg_t ovfThread(void *arg) {
@@ -16,12 +16,6 @@ static msg_t ovfThread(void *arg) {
       engine_ovf();
       v_ovf=0;
     }
-    
-//     v_data++;
-//     if(v_data==5){
-//       v_data=0;
-//       data_send();
-//     }
     chThdSleepMilliseconds(100);
   }
   return 0;

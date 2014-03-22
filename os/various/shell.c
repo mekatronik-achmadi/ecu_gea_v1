@@ -97,6 +97,7 @@ static void cmd_info(BaseSequentialStream *chp, int argc, char *argv[]) {
   chprintf(chp, "Build time:   %s%s%s\r\n", __DATE__, " - ", __TIME__);
 #endif
 #endif
+  return;
 }
 
 // static void cmd_systime(BaseSequentialStream *chp, int argc, char *argv[]) {
