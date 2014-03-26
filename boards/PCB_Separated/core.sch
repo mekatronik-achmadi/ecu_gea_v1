@@ -1678,8 +1678,9 @@ Source: http://www.ftdichip.com/Documents/DataSheets/DS_FT232R_v104.pdf</descrip
 <wire x1="147.32" y1="43.18" x2="144.78" y2="43.18" width="0.1524" layer="91"/>
 <wire x1="144.78" y1="43.18" x2="144.78" y2="27.94" width="0.1524" layer="91"/>
 <wire x1="144.78" y1="27.94" x2="177.8" y2="27.94" width="0.1524" layer="91"/>
-<wire x1="177.8" y1="27.94" x2="177.8" y2="38.1" width="0.1524" layer="91"/>
+<wire x1="177.8" y1="27.94" x2="177.8" y2="35.56" width="0.1524" layer="91"/>
 <pinref part="IC1" gate="1" pin="TEST"/>
+<wire x1="177.8" y1="35.56" x2="177.8" y2="38.1" width="0.1524" layer="91"/>
 <wire x1="177.8" y1="38.1" x2="177.8" y2="40.64" width="0.1524" layer="91"/>
 <wire x1="177.8" y1="40.64" x2="177.8" y2="45.72" width="0.1524" layer="91"/>
 <wire x1="177.8" y1="45.72" x2="175.26" y2="45.72" width="0.1524" layer="91"/>
@@ -1688,6 +1689,8 @@ Source: http://www.ftdichip.com/Documents/DataSheets/DS_FT232R_v104.pdf</descrip
 <pinref part="IC1" gate="1" pin="GND@1"/>
 <wire x1="175.26" y1="38.1" x2="177.8" y2="38.1" width="0.1524" layer="91"/>
 <label x="139.7" y="35.56" size="1.778" layer="95"/>
+<pinref part="IC1" gate="1" pin="GND@2"/>
+<wire x1="175.26" y1="35.56" x2="177.8" y2="35.56" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="IN" gate="A" pin="1"/>
