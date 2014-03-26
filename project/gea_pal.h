@@ -22,6 +22,8 @@
 #define off_ign2 palSetPad(GPIOC,ign_2)
 #define on_ign2 palClearPad(GPIOC,ign_2)
 
+// add handler to using IAC
+
 void Pal_Setup(void);
 
 #endif  
