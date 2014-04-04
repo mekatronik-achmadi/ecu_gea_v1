@@ -544,81 +544,90 @@ Es handelt sich hierbei um AK500 in horizontaler Ausführung.&lt;p&gt;
 <busses>
 </busses>
 <nets>
-<net name="N$1" class="0">
+<net name="NO_USE-TPS" class="0">
 <segment>
 <pinref part="INA" gate="-3" pin="KL"/>
 <pinref part="X1" gate="G$1" pin="3"/>
 <wire x1="38.1" y1="60.96" x2="55.88" y2="60.96" width="0.1524" layer="91"/>
+<label x="2.54" y="60.96" size="1.778" layer="95"/>
 </segment>
 </net>
-<net name="N$2" class="0">
+<net name="IGN1-ICU" class="0">
 <segment>
 <pinref part="INA" gate="-4" pin="KL"/>
 <wire x1="38.1" y1="55.88" x2="40.64" y2="55.88" width="0.1524" layer="91"/>
 <wire x1="40.64" y1="55.88" x2="40.64" y2="58.42" width="0.1524" layer="91"/>
 <pinref part="X1" gate="G$1" pin="4"/>
 <wire x1="40.64" y1="58.42" x2="55.88" y2="58.42" width="0.1524" layer="91"/>
+<label x="7.62" y="55.88" size="1.778" layer="95"/>
 </segment>
 </net>
-<net name="N$3" class="0">
+<net name="INJ1-NO_USE" class="0">
 <segment>
 <pinref part="INA" gate="-5" pin="KL"/>
 <wire x1="38.1" y1="50.8" x2="43.18" y2="50.8" width="0.1524" layer="91"/>
 <wire x1="43.18" y1="50.8" x2="43.18" y2="55.88" width="0.1524" layer="91"/>
 <pinref part="X1" gate="G$1" pin="5"/>
 <wire x1="43.18" y1="55.88" x2="55.88" y2="55.88" width="0.1524" layer="91"/>
+<label x="2.54" y="50.8" size="1.778" layer="95"/>
 </segment>
 </net>
-<net name="N$4" class="0">
+<net name="IACB-VSS" class="0">
 <segment>
 <pinref part="INA" gate="-2" pin="KL"/>
 <wire x1="38.1" y1="66.04" x2="40.64" y2="66.04" width="0.1524" layer="91"/>
 <wire x1="40.64" y1="66.04" x2="40.64" y2="63.5" width="0.1524" layer="91"/>
 <pinref part="X1" gate="G$1" pin="2"/>
 <wire x1="40.64" y1="63.5" x2="55.88" y2="63.5" width="0.1524" layer="91"/>
+<label x="7.62" y="66.04" size="1.778" layer="95"/>
 </segment>
 </net>
-<net name="N$5" class="0">
+<net name="IACD-GND" class="0">
 <segment>
 <pinref part="INA" gate="-1" pin="KL"/>
 <wire x1="38.1" y1="71.12" x2="43.18" y2="71.12" width="0.1524" layer="91"/>
 <wire x1="43.18" y1="71.12" x2="43.18" y2="66.04" width="0.1524" layer="91"/>
 <pinref part="X1" gate="G$1" pin="1"/>
 <wire x1="43.18" y1="66.04" x2="55.88" y2="66.04" width="0.1524" layer="91"/>
+<label x="7.62" y="71.12" size="1.778" layer="95"/>
 </segment>
 </net>
-<net name="N$6" class="0">
+<net name="INJ2-NO_USE" class="0">
 <segment>
 <pinref part="X1" gate="G$1" pin="9"/>
 <wire x1="71.12" y1="55.88" x2="83.82" y2="55.88" width="0.1524" layer="91"/>
 <wire x1="83.82" y1="55.88" x2="83.82" y2="50.8" width="0.1524" layer="91"/>
 <pinref part="INB" gate="-1" pin="KL"/>
 <wire x1="83.82" y1="50.8" x2="96.52" y2="50.8" width="0.1524" layer="91"/>
+<label x="119.38" y="50.8" size="1.778" layer="95"/>
 </segment>
 </net>
-<net name="N$7" class="0">
+<net name="IGN2-VSS" class="0">
 <segment>
 <pinref part="X1" gate="G$1" pin="8"/>
 <wire x1="71.12" y1="58.42" x2="86.36" y2="58.42" width="0.1524" layer="91"/>
 <wire x1="86.36" y1="58.42" x2="86.36" y2="55.88" width="0.1524" layer="91"/>
 <pinref part="INB" gate="-2" pin="KL"/>
 <wire x1="86.36" y1="55.88" x2="96.52" y2="55.88" width="0.1524" layer="91"/>
+<label x="119.38" y="55.88" size="1.778" layer="95"/>
 </segment>
 </net>
-<net name="N$8" class="0">
+<net name="IACA-VCC" class="0">
 <segment>
 <pinref part="X1" gate="G$1" pin="7"/>
 <wire x1="71.12" y1="60.96" x2="96.52" y2="60.96" width="0.1524" layer="91"/>
 <pinref part="INB" gate="-3" pin="KL"/>
+<label x="119.38" y="60.96" size="1.778" layer="95"/>
 </segment>
 </net>
-<net name="N$9" class="0">
+<net name="IACC-V12" class="0">
 <segment>
 <pinref part="X1" gate="G$1" pin="6"/>
 <wire x1="71.12" y1="63.5" x2="86.36" y2="63.5" width="0.1524" layer="91"/>
 <wire x1="86.36" y1="63.5" x2="86.36" y2="66.04" width="0.1524" layer="91"/>
 <pinref part="INB" gate="-4" pin="KL"/>
 <wire x1="86.36" y1="66.04" x2="96.52" y2="66.04" width="0.1524" layer="91"/>
+<label x="119.38" y="66.04" size="1.778" layer="95"/>
 </segment>
 </net>
 </nets>
