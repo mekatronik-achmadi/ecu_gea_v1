@@ -13,14 +13,14 @@
 <layer number="17" name="Pads" color="2" fill="1" visible="yes" active="yes"/>
 <layer number="18" name="Vias" color="2" fill="1" visible="yes" active="yes"/>
 <layer number="19" name="Unrouted" color="6" fill="1" visible="no" active="yes"/>
-<layer number="20" name="Dimension" color="15" fill="1" visible="yes" active="yes"/>
+<layer number="20" name="Dimension" color="15" fill="1" visible="no" active="yes"/>
 <layer number="21" name="tPlace" color="7" fill="1" visible="yes" active="yes"/>
-<layer number="22" name="bPlace" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="22" name="bPlace" color="7" fill="1" visible="no" active="yes"/>
 <layer number="23" name="tOrigins" color="15" fill="1" visible="yes" active="yes"/>
-<layer number="24" name="bOrigins" color="15" fill="1" visible="yes" active="yes"/>
-<layer number="25" name="tNames" color="7" fill="1" visible="yes" active="yes"/>
-<layer number="26" name="bNames" color="7" fill="1" visible="yes" active="yes"/>
-<layer number="27" name="tValues" color="7" fill="1" visible="no" active="yes"/>
+<layer number="24" name="bOrigins" color="15" fill="1" visible="no" active="yes"/>
+<layer number="25" name="tNames" color="7" fill="1" visible="no" active="yes"/>
+<layer number="26" name="bNames" color="7" fill="1" visible="no" active="yes"/>
+<layer number="27" name="tValues" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="28" name="bValues" color="7" fill="1" visible="no" active="yes"/>
 <layer number="29" name="tStop" color="7" fill="3" visible="no" active="yes"/>
 <layer number="30" name="bStop" color="7" fill="6" visible="no" active="yes"/>
@@ -44,8 +44,8 @@
 <layer number="48" name="Document" color="7" fill="1" visible="no" active="yes"/>
 <layer number="49" name="Reference" color="7" fill="1" visible="no" active="yes"/>
 <layer number="50" name="dxf" color="7" fill="1" visible="no" active="no"/>
-<layer number="51" name="tDocu" color="7" fill="1" visible="yes" active="yes"/>
-<layer number="52" name="bDocu" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="51" name="tDocu" color="7" fill="1" visible="no" active="yes"/>
+<layer number="52" name="bDocu" color="7" fill="1" visible="no" active="yes"/>
 <layer number="91" name="Nets" color="2" fill="1" visible="no" active="no"/>
 <layer number="92" name="Busses" color="1" fill="1" visible="no" active="no"/>
 <layer number="93" name="Pins" color="2" fill="1" visible="no" active="no"/>
@@ -2559,10 +2559,10 @@ design rules under a new name.</description>
 <element name="IC3" library="v-reg" package="317TS" value="" x="14.478" y="73.787" rot="R270"/>
 <element name="R-VDD1" library="resistor" package="0204/7" value="330" x="16.129" y="73.279" rot="R90"/>
 <element name="R-VDD2" library="resistor" package="0204/7" value="270" x="21.971" y="77.089"/>
-<element name="C-V12" library="resistor" package="E2-5" value="100n/25v" x="1.143" y="75.311" rot="R270"/>
+<element name="C-V12" library="resistor" package="E2-5" value="100u/25v" x="1.143" y="75.311" rot="R270"/>
 <element name="D-V12" library="diode" package="DO41-10" value="1N4004" x="5.842" y="66.548"/>
-<element name="C-VCC" library="resistor" package="E2-5" value="100n/25v" x="1.778" y="70.231" rot="R90"/>
-<element name="C-VDD1" library="resistor" package="E2-5" value="100n/25v" x="92.964" y="71.12" rot="R180"/>
+<element name="C-VCC" library="resistor" package="E2-5" value="100u/25v" x="1.778" y="70.231" rot="R90"/>
+<element name="C-VDD1" library="resistor" package="E2-5" value="100u/25v" x="92.964" y="71.12" rot="R180"/>
 <element name="C-VDD2" library="resistor" package="C050-024X044" value="100n" x="92.71" y="67.31"/>
 <element name="X3" library="con-subd" package="F09HP" value="" x="3.175" y="49.022" rot="R90">
 <attribute name="OC_NEWARK" value="unknown" x="3.175" y="49.022" size="1.778" layer="27" rot="R90" display="off"/>

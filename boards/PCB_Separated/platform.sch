@@ -18613,10 +18613,10 @@ D = Direct mounting &lt;p&gt;
 <part name="IC3" library="v-reg" deviceset="LM317TS" device=""/>
 <part name="R-VDD1" library="resistor" deviceset="R-EU_" device="0204/7" value="330"/>
 <part name="R-VDD2" library="resistor" deviceset="R-EU_" device="0204/7" value="270"/>
-<part name="C-V12" library="resistor" deviceset="CPOL-EU" device="E2-5" value="100n/25v"/>
+<part name="C-V12" library="resistor" deviceset="CPOL-EU" device="E2-5" value="100u/25v"/>
 <part name="D-V12" library="diode" deviceset="1N4004" device=""/>
-<part name="C-VCC" library="resistor" deviceset="CPOL-EU" device="E2-5" value="100n/25v"/>
-<part name="C-VDD1" library="resistor" deviceset="CPOL-EU" device="E2-5" value="100n/25v"/>
+<part name="C-VCC" library="resistor" deviceset="CPOL-EU" device="E2-5" value="100u/25v"/>
+<part name="C-VDD1" library="resistor" deviceset="CPOL-EU" device="E2-5" value="100u/25v"/>
 <part name="C-VDD2" library="resistor" deviceset="C-EU" device="050-024X044" value="100n"/>
 <part name="X3" library="con-subd" deviceset="F09HP" device=""/>
 <part name="X4" library="con-subd" deviceset="F09HP" device=""/>
