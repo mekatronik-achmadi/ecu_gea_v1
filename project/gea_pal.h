@@ -3,10 +3,10 @@
 
 #define led 8
 
-#define inj_1 6
-#define inj_2 7
-#define ign_1 9
-#define ign_2 8
+#define inj_1 9
+#define inj_2 8
+#define ign_1 7
+#define ign_2 6
 
 #define no_pulse palTogglePad(GPIOA,led)
 
