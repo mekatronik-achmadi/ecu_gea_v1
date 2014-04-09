@@ -47,9 +47,39 @@ static void cmd_test(BaseSequentialStream *chp, int argc, char *argv[]) {
   return;
 }
 
+static void cmd_iacup(BaseSequentialStream *chp, int argc, char *argv[]) {
+  (void)argv;
+  int i;
+  if(argc>0){
+    chprintf(chp,"iac up\r\n");
+    return;
+  };
+  for(i=0;i<8;i++){
+    Iac_up();
+  }
+  chprintf((BaseSequentialStream *)&SD1,"IAC up test finished\r\n");
+  return;
+}
+
+static void cmd_iacdown(BaseSequentialStream *chp, int argc, char *argv[]) {
+  (void)argv;
+  int i;
+  if(argc>0){
+    chprintf(chp,"iac down\r\n");
+    return;
+  };
+  for(i=0;i<8;i++){
+    Iac_down();
+  }
+  chprintf((BaseSequentialStream *)&SD1,"IAC down test finished\r\n");
+  return;
+}
+
 static const ShellCommand commands[] = {
   {"data",cmd_data},
   {"test",cmd_test},
+  {"iac_up",cmd_iacup},
+  {"iac_down",cmd_iacdown},
   {NULL, NULL}
 };
 

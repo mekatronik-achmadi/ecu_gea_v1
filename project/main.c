@@ -23,6 +23,8 @@ int main(void) {
   Adc_Setup();
   Gpt_Setup();
   
+  IACA_H;IACB_L;
+  IACC_L;IACD_L;
   
   /*
    * Normal main() thread activity, in this demo it does nothing except
@@ -34,8 +36,7 @@ int main(void) {
     
     Shell_Setup(); /* create shell */
     chThdSleepMilliseconds(500);
-    /*
-     * this for test injector and ignitor
-     */    
+//     Iac_up();
+//     Iac_down();
   };
 }
