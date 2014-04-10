@@ -1,5 +1,7 @@
 #include "srcconf.h"
 
+uint8_t i;
+
 /*
  * Application entry point.
  */
@@ -36,7 +38,11 @@ int main(void) {
     
     Shell_Setup(); /* create shell */
     chThdSleepMilliseconds(500);
-//     Iac_up();
-//     Iac_down();
+//     for(i=0;i<5;i++){
+//       Iac_up();
+//     };
+//     for(i=0;i<5;i++){
+//       Iac_down();
+//     };
   };
 }
