@@ -54,9 +54,14 @@ static void cmd_iacup(BaseSequentialStream *chp, int argc, char *argv[]) {
     chprintf(chp,"iac up\r\n");
     return;
   };
-  for(i=0;i<10;i++){
-    Iac_CW();
-  };
+  if(stt_run==0){
+    for(i=0;i<20;i++){
+      Iac_CW();
+    };  
+  }
+  else{
+    chprintf((BaseSequentialStream *)&SD1,"test cannot run during running conditions\r\n");
+  }
   chprintf((BaseSequentialStream *)&SD1,"IAC up test finished\r\n");
   return;
 }
@@ -68,8 +73,13 @@ static void cmd_iacdown(BaseSequentialStream *chp, int argc, char *argv[]) {
     chprintf(chp,"iac down\r\n");
     return;
   };
-  for(i=0;i<20;i++){
-    Iac_CCW();
+  if(stt_run==0){
+    for(i=0;i<20;i++){
+      Iac_CCW();
+    };  
+  }
+  else{
+    chprintf((BaseSequentialStream *)&SD1,"test cannot run during running conditions\r\n");
   }
   chprintf((BaseSequentialStream *)&SD1,"IAC down test finished\r\n");
   return;
