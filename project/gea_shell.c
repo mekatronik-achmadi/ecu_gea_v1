@@ -68,7 +68,7 @@ static void cmd_iacdown(BaseSequentialStream *chp, int argc, char *argv[]) {
     chprintf(chp,"iac down\r\n");
     return;
   };
-  for(i=0;i<10;i++){
+  for(i=0;i<20;i++){
     Iac_CCW();
   }
   chprintf((BaseSequentialStream *)&SD1,"IAC down test finished\r\n");
