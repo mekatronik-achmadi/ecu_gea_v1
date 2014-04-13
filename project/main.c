@@ -1,6 +1,6 @@
 #include "srcconf.h"
 
-uint8_t i;
+uint16_t i;
 
 /*
  * Application entry point.
@@ -25,24 +25,10 @@ int main(void) {
   Adc_Setup();
   Gpt_Setup();
   
-  IACA_H;IACB_L;
-  IACC_L;IACD_L;
-  
-  /*
-   * Normal main() thread activity, in this demo it does nothing except
-   * sleeping in a loop and check the button state.
-   */
   palSetPad(GPIOA,led);
   
-  while (TRUE) {
-    
+  while (TRUE) {   
     Shell_Setup(); /* create shell */
     chThdSleepMilliseconds(500);
-//     for(i=0;i<5;i++){
-//       Iac_up();
-//     };
-//     for(i=0;i<5;i++){
-//       Iac_down();
-//     };
   };
 }

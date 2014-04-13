@@ -12,50 +12,32 @@ void Pal_Setup(void){
   palSetPadMode(GPIOB,IACB,PAL_MODE_OUTPUT_PUSHPULL);
   palSetPadMode(GPIOB,IACC,PAL_MODE_OUTPUT_PUSHPULL);
   palSetPadMode(GPIOB,IACD,PAL_MODE_OUTPUT_PUSHPULL);
+  
+  IACA_L;IACB_L;IACC_L;IACD_L;interval;
 }
 
-#define interval 6
-
-void Iac_up(void){
-  // 1st phase
-  IACA_H;IACB_L;
-  IACC_L;IACD_L;
-  chThdSleepMilliseconds(interval);
-  
-  // 2nd phase
-  IACA_L;IACB_L;
-  IACC_H;IACD_L;
-  chThdSleepMilliseconds(interval);
-  
-  // 3rd phase
-  IACA_L;IACB_H;
-  IACC_L;IACD_L;
-  chThdSleepMilliseconds(interval);
-  
-  // 4th phase
-  IACA_L;IACB_L;
-  IACC_L;IACD_H;
-  chThdSleepMilliseconds(interval);
+//maju
+void Iac_CW(void){
+  IACA_H;IACB_L;IACC_L;IACD_L;	interval;
+  IACA_L;IACB_L;IACC_H;IACD_L;	interval;
+  IACA_L;IACB_H;IACC_L;IACD_L;	interval;
+  IACA_L;IACB_L;IACC_L;IACD_H;	interval;
+  IACA_H;IACB_L;IACC_L;IACD_L;	interval;
+  IACA_L;IACB_L;IACC_H;IACD_L;	interval;
+  IACA_L;IACB_H;IACC_L;IACD_L;	interval;
+  IACA_L;IACB_L;IACC_L;IACD_H;	interval;
+  IACA_L;IACB_L;IACC_L;IACD_L;
 }
 
-void Iac_down(void){
-  // 1st phase
-  IACA_L;IACB_H;
-  IACC_L;IACD_L;
-  chThdSleepMilliseconds(interval);
-  
-  // 2nd phase
-  IACA_L;IACB_L;
-  IACC_L;IACD_H;
-  chThdSleepMilliseconds(interval);
-  
-  // 3rd phase
-  IACA_H;IACB_L;
-  IACC_L;IACD_L;
-  chThdSleepMilliseconds(interval);
-  
-  // 4th phase
-  IACA_L;IACB_L;
-  IACC_H;IACD_L;
-  chThdSleepMilliseconds(interval);
+//mundur
+void Iac_CCW(void){
+  IACA_H;IACB_L;IACC_L;IACD_L;	interval;
+  IACA_L;IACB_H;IACC_L;IACD_L;	interval;
+  IACA_H;IACB_L;IACC_H;IACD_L;	interval;
+  IACA_L;IACB_L;IACC_L;IACD_H;	interval;
+  IACA_H;IACB_L;IACC_L;IACD_L;	interval;
+  IACA_L;IACB_H;IACC_L;IACD_L;	interval;
+  IACA_H;IACB_L;IACC_H;IACD_L;	interval;
+  IACA_L;IACB_L;IACC_L;IACD_H;	interval;
+  IACA_L;IACB_L;IACC_L;IACD_L;
 }

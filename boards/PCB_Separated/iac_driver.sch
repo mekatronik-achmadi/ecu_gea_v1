@@ -3532,22 +3532,17 @@ type RDH, grid 15 mm</description>
 </net>
 <net name="IACA_OUT" class="0">
 <segment>
-<pinref part="IC1" gate="G$1" pin="1A"/>
-<wire x1="45.72" y1="35.56" x2="40.64" y2="35.56" width="0.1524" layer="91"/>
-<label x="35.56" y="35.56" size="1.778" layer="95"/>
-</segment>
-<segment>
 <pinref part="OUTPUT" gate="-1" pin="KL"/>
 <wire x1="5.08" y1="12.7" x2="12.7" y2="12.7" width="0.1524" layer="91"/>
 <label x="12.7" y="12.7" size="1.778" layer="95"/>
 </segment>
-</net>
-<net name="IACA_IN" class="0">
 <segment>
 <pinref part="IC1" gate="G$1" pin="1Y"/>
 <wire x1="45.72" y1="30.48" x2="40.64" y2="30.48" width="0.1524" layer="91"/>
 <label x="35.56" y="30.48" size="1.778" layer="95"/>
 </segment>
+</net>
+<net name="IACA_IN" class="0">
 <segment>
 <pinref part="R1" gate="G$1" pin="1"/>
 <wire x1="109.22" y1="35.56" x2="109.22" y2="33.02" width="0.1524" layer="91"/>
@@ -3557,6 +3552,11 @@ type RDH, grid 15 mm</description>
 <pinref part="INPUT" gate="-1" pin="KL"/>
 <wire x1="5.08" y1="38.1" x2="12.7" y2="38.1" width="0.1524" layer="91"/>
 <label x="12.7" y="38.1" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="IC1" gate="G$1" pin="1A"/>
+<wire x1="45.72" y1="35.56" x2="40.64" y2="35.56" width="0.1524" layer="91"/>
+<label x="35.56" y="35.56" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="IACB_OUT" class="0">
@@ -3590,22 +3590,17 @@ type RDH, grid 15 mm</description>
 </net>
 <net name="IACD_OUT" class="0">
 <segment>
-<pinref part="IC1" gate="G$1" pin="4A"/>
-<wire x1="76.2" y1="35.56" x2="81.28" y2="35.56" width="0.1524" layer="91"/>
-<label x="81.28" y="35.56" size="1.778" layer="95"/>
-</segment>
-<segment>
 <pinref part="OUTPUT" gate="-4" pin="KL"/>
 <wire x1="5.08" y1="-2.54" x2="12.7" y2="-2.54" width="0.1524" layer="91"/>
 <label x="12.7" y="-2.54" size="1.778" layer="95"/>
 </segment>
-</net>
-<net name="IACD_IN" class="0">
 <segment>
 <pinref part="IC1" gate="G$1" pin="4Y"/>
 <wire x1="76.2" y1="30.48" x2="81.28" y2="30.48" width="0.1524" layer="91"/>
 <label x="81.28" y="30.48" size="1.778" layer="95"/>
 </segment>
+</net>
+<net name="IACD_IN" class="0">
 <segment>
 <pinref part="R4" gate="G$1" pin="1"/>
 <wire x1="139.7" y1="35.56" x2="139.7" y2="33.02" width="0.1524" layer="91"/>
@@ -3615,6 +3610,11 @@ type RDH, grid 15 mm</description>
 <pinref part="INPUT" gate="-4" pin="KL"/>
 <wire x1="5.08" y1="22.86" x2="12.7" y2="22.86" width="0.1524" layer="91"/>
 <label x="12.7" y="22.86" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="IC1" gate="G$1" pin="4A"/>
+<wire x1="76.2" y1="35.56" x2="81.28" y2="35.56" width="0.1524" layer="91"/>
+<label x="81.28" y="35.56" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="IACC_OUT" class="0">
