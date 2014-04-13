@@ -11,8 +11,8 @@ uint8_t toothcount;
 uint8_t inj_phase,ign_phase;
 
 static const uint16_t inj_data_off_deg[7]={10,12,14,16,18,20,25};
-// static const uint16_t inj_data_dur_deg[7]={25,30,40,50,60,70,80};
-static const uint16_t inj_data_dur_deg[7]={30,35,45,55,65,75,85};
+static const uint16_t inj_data_dur_deg[7]={25,30,40,50,60,70,80};
+// static const uint16_t inj_data_dur_deg[7]={30,35,45,55,65,75,85};
 static const uint16_t data_tps[7]={0,250,500,750,1000,1250};
 
 static const uint16_t ign_data_off_deg[7]={10,12,15,18,19,20,21};
@@ -154,15 +154,6 @@ void engine_ovf(void){
   off_ign1;
   off_ign2;
   stt_run=0;
-  /*
-   * for test purpos only. Comment above if below used
-   */
-   
-//   palTogglePad(GPIOA,led);
-//   palTogglePad(GPIOC,inj_1);
-//   palTogglePad(GPIOC,inj_2);
-//   palTogglePad(GPIOC,ign_1);
-//   palTogglePad(GPIOC,ign_2);
 }
 
 void data_send(void){

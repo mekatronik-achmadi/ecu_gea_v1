@@ -24,6 +24,8 @@
 
 #define interval chThdSleepMilliseconds(6);
 
+#define range 6
+
 #define IACA 15
 #define IACB 14
 #define IACC 13
@@ -46,5 +48,6 @@
 void Pal_Setup(void);
 void Iac_CW(void);
 void Iac_CCW(void);
+void Iac_Start(void);
 
 #endif  

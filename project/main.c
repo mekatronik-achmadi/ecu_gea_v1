@@ -27,6 +27,8 @@ int main(void) {
   
   palSetPad(GPIOA,led);
   
+  Iac_Start();
+  
   while (TRUE) {   
     Shell_Setup(); /* create shell */
     chThdSleepMilliseconds(500);
