@@ -9,8 +9,8 @@ static WORKING_AREA(wa_iacThread, 128);
 static msg_t iacThread(void *arg) {
   (void)arg;
   chRegSetThreadName("iac_control");
-  uint8_t i;
   while (TRUE) {
+    /*
     if(adc_tps<300){
       iac_stt=0;
     }
@@ -36,6 +36,9 @@ static msg_t iacThread(void *arg) {
     iac_stt_prev=iac_stt;
     
     chThdSleepMilliseconds(100);
+    */
+    
+    
   };
   return 0;
 }
@@ -55,7 +58,8 @@ void Pal_Setup(void){
   
 }
 
-//maju
+/*
+maju
 void Iac_CW(void){
   IACA_H;IACB_L;IACC_L;IACD_L;	interval;
   IACA_L;IACB_L;IACC_H;IACD_L;	interval;
@@ -77,21 +81,62 @@ void Iac_CCW(void){
   IACA_L;IACB_H;IACC_L;IACD_L;	interval;
   IACA_H;IACB_L;IACC_H;IACD_L;	interval;
   IACA_L;IACB_L;IACC_L;IACD_H;	interval;
+}*/
+
+/*
+void Iac_CW(uint8_t loop){
+  IACA_H;IACB_L;IACC_H;IACD_L; interval;interval;interval;
+  uint8_t i;
+  for(i=0;i<loop;i++){
+    IACA_H;IACB_L;IACC_H;IACD_L; interval;//1
+    IACA_H;IACB_L;IACC_L;IACD_L; interval;//2
+    IACA_H;IACB_L;IACC_L;IACD_H; interval;//3
+    IACA_L;IACB_L;IACC_L;IACD_H; interval;//4
+    IACA_L;IACB_H;IACC_L;IACD_H; interval;//5
+    IACA_L;IACB_H;IACC_L;IACD_L; interval;//6
+    IACA_L;IACB_H;IACC_H;IACD_L; interval;//7
+    IACA_L;IACB_L;IACC_H;IACD_L; interval;//8
+  }
+  IACA_L;IACB_L;IACC_L;IACD_L; interval;
+}
+
+//mundur
+void Iac_CCW(uint8_t loop){
+  IACA_H;IACB_L;IACC_H;IACD_L; interval;interval;interval;
+  uint8_t i;
+  for(i=0;i<loop;i++){
+    IACA_L;IACB_L;IACC_H;IACD_L; interval;//8
+    IACA_L;IACB_H;IACC_H;IACD_L; interval;//7
+    IACA_L;IACB_H;IACC_L;IACD_L; interval;//6
+    IACA_L;IACB_H;IACC_L;IACD_H; interval;//5
+    IACA_L;IACB_L;IACC_L;IACD_H; interval;//4
+    IACA_H;IACB_L;IACC_L;IACD_H; interval;//3
+    IACA_H;IACB_L;IACC_L;IACD_L; interval;//2
+    IACA_H;IACB_L;IACC_H;IACD_L; interval;//1
+  }
+  IACA_L;IACB_L;IACC_L;IACD_L; interval;
+}*/
+
+void Iac_CW(uint8_t loop){
+  IACA_H;IACB_L;IACC_L;IACD_L; interval;interval;interval;
+  uint8_t i;
+  for(i=0;i<loop;i++){
+    
+  }
+  IACA_L;IACB_L;IACC_L;IACD_L; interval;
+}
+
+//mundur
+void Iac_CCW(uint8_t loop){
+  IACA_H;IACB_L;IACC_L;IACD_L; interval;interval;interval;
+  uint8_t i;
+  for(i=0;i<loop;i++){
+    
+  }
+  IACA_L;IACB_L;IACC_L;IACD_L; interval;
 }
 
 void Iac_Start(void){
-  IACA_L;IACB_L;IACC_L;IACD_L;interval;
-  
-  int i;
-  for(i=0;i<30;i++){
-    Iac_CW();
-  }
-  IACA_L;IACB_L;IACC_L;IACD_L;interval;
-  
-  for(i=0;i<range;i++){
-    Iac_CCW();
-  }
-  IACA_L;IACB_L;IACC_L;IACD_L;interval;
   
   chThdCreateStatic(wa_iacThread, sizeof(wa_iacThread), NORMALPRIO, iacThread, NULL);
 }

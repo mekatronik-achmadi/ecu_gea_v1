@@ -49,16 +49,12 @@ static void cmd_test(BaseSequentialStream *chp, int argc, char *argv[]) {
 
 static void cmd_iacup(BaseSequentialStream *chp, int argc, char *argv[]) {
   (void)argv;
-  uint8_t i;
-  if(argc>0){
-    chprintf(chp,"iac up\r\n");
+  if(argc!=1){
+    chprintf(chp,"iau [number]\r\n");
     return;
   };
   if(stt_run==0){
-    for(i=0;i<range;i++){
-      Iac_CW();
-    };
-    IACA_L;IACB_L;IACC_L;IACD_L;interval;
+    Iac_CW(atoi(argv[0]));
   }
   else{
     chprintf((BaseSequentialStream *)&SD1,"test cannot run during running conditions\r\n");
@@ -69,16 +65,12 @@ static void cmd_iacup(BaseSequentialStream *chp, int argc, char *argv[]) {
 
 static void cmd_iacdown(BaseSequentialStream *chp, int argc, char *argv[]) {
   (void)argv;
-  uint8_t i;
-  if(argc>0){
-    chprintf(chp,"iac down\r\n");
+  if(argc!=1){
+    chprintf(chp,"iad [number]\r\n");
     return;
   };
   if(stt_run==0){
-    for(i=0;i<range;i++){
-      Iac_CCW();
-    };
-    IACA_L;IACB_L;IACC_L;IACD_L;interval;
+    Iac_CCW(atoi(argv[0]));
   }
   else{
     chprintf((BaseSequentialStream *)&SD1,"test cannot run during running conditions\r\n");
@@ -90,8 +82,8 @@ static void cmd_iacdown(BaseSequentialStream *chp, int argc, char *argv[]) {
 static const ShellCommand commands[] = {
   {"data",cmd_data},
   {"test",cmd_test},
-  {"iacup",cmd_iacup},
-  {"iacdown",cmd_iacdown},
+  {"iau",cmd_iacup},
+  {"iad",cmd_iacdown},
   {NULL, NULL}
 };
 

@@ -22,7 +22,7 @@
 #define off_ign2 palSetPad(GPIOC,ign_2)
 #define on_ign2 palClearPad(GPIOC,ign_2)
 
-#define interval chThdSleepMilliseconds(6);
+#define interval chThdSleepMilliseconds(5);
 
 #define range 6
 
@@ -46,8 +46,8 @@
 // add handler to using IAC
 
 void Pal_Setup(void);
-void Iac_CW(void);
-void Iac_CCW(void);
+void Iac_CW(uint8_t loop);
+void Iac_CCW(uint8_t loop);
 void Iac_Start(void);
 
 #endif  
