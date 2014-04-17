@@ -22,9 +22,7 @@
 #define off_ign2 palSetPad(GPIOC,ign_2)
 #define on_ign2 palClearPad(GPIOC,ign_2)
 
-#define interval chThdSleepMilliseconds(5);
-
-#define range 6
+#define interval chThdSleepMilliseconds(6);
 
 #define IACA 15
 #define IACB 14
