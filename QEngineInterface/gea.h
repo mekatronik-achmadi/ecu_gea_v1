@@ -2,6 +2,8 @@
 #define GEA_H
 
 #include <QMainWindow>
+#include <QTimer>
+#include <QMessageBox>
 
 namespace Ui {
 class gea;
@@ -17,6 +19,7 @@ public:
     
 private:
     Ui::gea *ui;
+
 };
 
 #endif // GEA_H
