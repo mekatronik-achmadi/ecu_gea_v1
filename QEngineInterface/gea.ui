@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>811</width>
-    <height>423</height>
+    <width>520</width>
+    <height>363</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -20,7 +20,7 @@
       <x>20</x>
       <y>10</y>
       <width>191</width>
-      <height>111</height>
+      <height>131</height>
      </rect>
     </property>
     <property name="title">
@@ -59,8 +59,8 @@
     <widget class="QPushButton" name="cmdOpen">
      <property name="geometry">
       <rect>
-       <x>100</x>
-       <y>70</y>
+       <x>10</x>
+       <y>100</y>
        <width>80</width>
        <height>23</height>
       </rect>
@@ -87,12 +87,25 @@
       <rect>
        <x>10</x>
        <y>70</y>
-       <width>91</width>
+       <width>161</width>
        <height>16</height>
       </rect>
      </property>
      <property name="text">
-      <string>8-n-1-115200</string>
+      <string>Default 8-n-1-38400</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="cmdRun">
+     <property name="geometry">
+      <rect>
+       <x>100</x>
+       <y>100</y>
+       <width>80</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Start</string>
      </property>
     </widget>
    </widget>
@@ -101,14 +114,14 @@
      <rect>
       <x>240</x>
       <y>10</y>
-      <width>181</width>
-      <height>101</height>
+      <width>251</width>
+      <height>141</height>
      </rect>
     </property>
     <property name="title">
      <string>TPS Set</string>
     </property>
-    <widget class="QLineEdit" name="lineEdit">
+    <widget class="QLineEdit" name="txtOnTPS">
      <property name="geometry">
       <rect>
        <x>40</x>
@@ -118,7 +131,7 @@
       </rect>
      </property>
     </widget>
-    <widget class="QLineEdit" name="lineEdit_2">
+    <widget class="QLineEdit" name="txtOffTPS">
      <property name="geometry">
       <rect>
        <x>40</x>
@@ -154,110 +167,93 @@
       <string>Off</string>
      </property>
     </widget>
-    <widget class="QPushButton" name="pushButton">
+    <widget class="QPushButton" name="cmdReadTPS">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>90</y>
+       <width>111</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Get</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="cmdSetTPS">
      <property name="geometry">
       <rect>
        <x>130</x>
-       <y>40</y>
-       <width>41</width>
-       <height>41</height>
+       <y>90</y>
+       <width>111</width>
+       <height>31</height>
       </rect>
      </property>
      <property name="text">
       <string>Set</string>
      </property>
     </widget>
+    <widget class="QPushButton" name="cmdOnGet">
+     <property name="geometry">
+      <rect>
+       <x>150</x>
+       <y>30</y>
+       <width>71</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Full</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="cmdOffGet">
+     <property name="geometry">
+      <rect>
+       <x>150</x>
+       <y>60</y>
+       <width>71</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Off</string>
+     </property>
+    </widget>
    </widget>
    <widget class="QLabel" name="label_5">
     <property name="geometry">
      <rect>
-      <x>510</x>
-      <y>210</y>
-      <width>57</width>
-      <height>15</height>
+      <x>20</x>
+      <y>150</y>
+      <width>101</width>
+      <height>16</height>
      </rect>
     </property>
     <property name="text">
-     <string>RPM</string>
+     <string>Received Data</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label_6">
+   <widget class="QPlainTextEdit" name="txtData">
     <property name="geometry">
      <rect>
-      <x>690</x>
-      <y>210</y>
-      <width>57</width>
-      <height>15</height>
+      <x>20</x>
+      <y>170</y>
+      <width>471</width>
+      <height>81</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lblData">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>260</y>
+      <width>471</width>
+      <height>41</height>
      </rect>
     </property>
     <property name="text">
-     <string>TPS</string>
-    </property>
-   </widget>
-   <widget class="QTableWidget" name="tblTPS">
-    <property name="geometry">
-     <rect>
-      <x>60</x>
-      <y>140</y>
-      <width>381</width>
-      <height>91</height>
-     </rect>
-    </property>
-    <property name="rowCount">
-     <number>2</number>
-    </property>
-    <property name="columnCount">
-     <number>7</number>
-    </property>
-    <attribute name="horizontalHeaderStretchLastSection">
-     <bool>false</bool>
-    </attribute>
-    <attribute name="verticalHeaderStretchLastSection">
-     <bool>false</bool>
-    </attribute>
-    <row/>
-    <row/>
-    <column/>
-    <column/>
-    <column/>
-    <column/>
-    <column/>
-    <column/>
-    <column/>
-   </widget>
-   <widget class="QDial" name="dial">
-    <property name="geometry">
-     <rect>
-      <x>460</x>
-      <y>30</y>
-      <width>161</width>
-      <height>201</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">border-color: qconicalgradient(cx:0.5, cy:0.5, angle:0, stop:0 rgba(35, 40, 3, 255), stop:0.16 rgba(136, 106, 22, 255), stop:0.225 rgba(166, 140, 41, 255), stop:0.285 rgba(204, 181, 74, 255), stop:0.345 rgba(235, 219, 102, 255), stop:0.415 rgba(245, 236, 112, 255), stop:0.52 rgba(209, 190, 76, 255), stop:0.57 rgba(187, 156, 51, 255), stop:0.635 rgba(168, 142, 42, 255), stop:0.695 rgba(202, 174, 68, 255), stop:0.75 rgba(218, 202, 86, 255), stop:0.815 rgba(208, 187, 73, 255), stop:0.88 rgba(187, 156, 51, 255), stop:0.935 rgba(137, 108, 26, 255), stop:1 rgba(35, 40, 3, 255));</string>
-    </property>
-    <property name="orientation">
-     <enum>Qt::Horizontal</enum>
-    </property>
-    <property name="invertedAppearance">
-     <bool>false</bool>
-    </property>
-    <property name="invertedControls">
-     <bool>false</bool>
-    </property>
-    <property name="wrapping">
-     <bool>false</bool>
-    </property>
-   </widget>
-   <widget class="QDial" name="dial_2">
-    <property name="geometry">
-     <rect>
-      <x>640</x>
-      <y>30</y>
-      <width>161</width>
-      <height>201</height>
-     </rect>
+     <string>Extracted Data</string>
     </property>
    </widget>
   </widget>
@@ -266,7 +262,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>811</width>
+     <width>520</width>
      <height>20</height>
     </rect>
    </property>
@@ -278,8 +274,20 @@
    <attribute name="toolBarBreak">
     <bool>false</bool>
    </attribute>
+   <addaction name="actionQuit"/>
+   <addaction name="actionAboutQt"/>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
+  <action name="actionQuit">
+   <property name="text">
+    <string>Quit</string>
+   </property>
+  </action>
+  <action name="actionAboutQt">
+   <property name="text">
+    <string>AboutQt</string>
+   </property>
+  </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources/>

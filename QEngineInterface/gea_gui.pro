@@ -17,13 +17,36 @@ SOURCES += main.cpp\
     posix_qextserialport.cpp \
     qextserialenumerator.cpp \
     qextserialbase.cpp \
-    qextserialport.cpp
+    qextserialport.cpp \
+    frmrpm.cpp \
+    dial_meter.cpp \
+    frmtps.cpp \
+    frmclk.cpp \
+    frmign.cpp \
+    frminj.cpp
 
 HEADERS  += gea.h \
     qextserialenumerator.h \
     qextserialbase.h \
     posix_qextserialport.h \
-    qextserialport.h
+    qextserialport.h \
+    frmrpm.h \
+    dial_meter.h \
+    frmtps.h \
+    frmclk.h \
+    frmign.h \
+    frminj.h
 
-FORMS    += gea.ui
+FORMS    += gea.ui \
+    frmrpm.ui \
+    frmtps.ui \
+    frmclk.ui \
+    frmign.ui \
+    frminj.ui
 DEFINES  += _TTY_POSIX_
+
+CONFIG += qwt
+
+INCLUDEPATH += /usr/local/qwt-6.1.0/include
+LIBS += -L/usr/local/qwt-6.1.0/lib -lqwt
+

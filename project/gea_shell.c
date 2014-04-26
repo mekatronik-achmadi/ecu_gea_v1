@@ -6,16 +6,16 @@ Thread *shelltp = NULL;
 
 static void cmd_data(BaseSequentialStream *chp, int argc, char *argv[]) {
   (void)argv;
-  int i;
+//   int i;
   if(argc>0){
     chprintf(chp,"data\r\n");
     return;
   };
-  for(i=0;i<15;i++){
+//   for(i=0;i<15;i++){
     data_send();
-    chThdSleepMilliseconds(500);
-  };
-  chprintf((BaseSequentialStream *)&SD1,"data finished\r\n");
+//     chThdSleepMilliseconds(500);
+//   };
+//   chprintf((BaseSequentialStream *)&SD1,"data finished\r\n");
   return;
 }
 

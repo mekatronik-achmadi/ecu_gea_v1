@@ -91,9 +91,10 @@ void engine_calc(void){
     deg_rot_tick=rot_tick/360;
     
     toothcount++;
-    if(toothcount==all_tooth){toothcount=0;}
-    if(toothcount==all_tooth+1){toothcount=1;} 
   }
+  
+  if(toothcount==all_tooth+1){toothcount=0;}
+  if(toothcount==all_tooth+2){toothcount=1;} 
 }
 
 void engine_set(void){
@@ -156,5 +157,6 @@ void engine_ovf(void){
 }
 
 void data_send(void){
-  chprintf((BaseSequentialStream *)&SD1, "%6i %6i %6i %6i %6i %6i %6i %6i\r\n",rpm,adc_tps,ign_dur_deg,ign_dur_tick,ign_off_deg,inj_dur_deg,inj_dur_tick,inj_off_deg);
+  chprintf((BaseSequentialStream *)&SD1, "%6i,%6i,%6i,%6i,%6i,%6i,%6i,%6i\r\n",
+	   rpm,adc_tps,ign_dur_deg,ign_dur_tick,ign_off_deg,inj_dur_deg,inj_dur_tick,inj_off_deg);
 }
