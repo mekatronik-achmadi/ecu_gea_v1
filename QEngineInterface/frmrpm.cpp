@@ -25,7 +25,7 @@ QwtDial *frmrpm::createDial(void){
 
     d_tacho = new dial_Meter( this );
     d_tacho->setScaleStepSize( 1000.0 );
-    d_tacho->setScale( 0.0, 10000.0 );
+    d_tacho->setScale( 0.0, 15000.0 );
     d_tacho->scaleDraw()->setPenWidth( 2 );
     d_tacho->setLabel("RPM");
 

@@ -1,89 +1,138 @@
 #include "srcconf.h"
 
-uint8_t stt_run=0;
+extern adcsample_t adc_tps_close,adc_tps_full;
+
+extern uint16_t inj_data_off_deg[cdata];
+extern uint16_t inj_data_dur_deg[cdata];
+extern uint16_t ign_data_off_deg[cdata];
 
 Thread *shelltp = NULL;
 
 static void cmd_data(BaseSequentialStream *chp, int argc, char *argv[]) {
+  (void)argc;
+  (void)chp;
   (void)argv;
-//   int i;
-  if(argc>0){
-    chprintf(chp,"data\r\n");
-    return;
-  };
-//   for(i=0;i<15;i++){
-    data_send();
-//     chThdSleepMilliseconds(500);
-//   };
-//   chprintf((BaseSequentialStream *)&SD1,"data finished\r\n");
+  data_send();
   return;
 }
 
-static void cmd_test(BaseSequentialStream *chp, int argc, char *argv[]) {
+static void cmd_save_tps(BaseSequentialStream *chp, int argc, char *argv[]){
+  (void)argc;
+  (void)chp;
+  adc_tps_close=atoi(argv[1]);
+  adc_tps_full=atoi(argv[2]);
+  mem_adc(SAVE);
+}
+
+static void cmd_read_tps(BaseSequentialStream *chp, int argc, char *argv[]){
+  (void)argc;
+  (void)chp;
   (void)argv;
+  mem_adc(READ);
+  chprintf(chp,"%6i %6i\r\n",adc_tps_close,adc_tps_full);
+}
+
+static void cmd_save_injoff(BaseSequentialStream *chp, int argc, char *argv[]){
+  (void)argc;
+  (void)chp;
   int i;
-  if(argc>0){
-    chprintf(chp,"test\r\n");
-    return;
+  for(i=0;i<cdata;i++){
+    inj_data_off_deg[i]=atoi(argv[i]);
   };
-  if(stt_run==0){
-    for(i=0;i<15;i++){
-      on_inj1;
-      on_inj2;
-      on_ign1;
-      on_ign2;
-      chThdSleepMilliseconds(25);
-      off_inj1;
-      off_inj2;
-      off_ign1;
-      off_ign2;
-      chThdSleepMilliseconds(25);
-    };
-  }
-  else{
-    chprintf((BaseSequentialStream *)&SD1,"test cannot run during running conditions\r\n");
-  }
-  chprintf((BaseSequentialStream *)&SD1,"test finished\r\n");
-  return;
+  mem_inj_data_off_deg(SAVE);
 }
 
-static void cmd_iacup(BaseSequentialStream *chp, int argc, char *argv[]) {
+static void cmd_read_injoff(BaseSequentialStream *chp, int argc, char *argv[]){
+  (void)argc;
+  (void)chp;
   (void)argv;
-  if(argc!=1){
-    chprintf(chp,"iau [number]\r\n");
-    return;
-  };
-  if(stt_run==0){
-    Iac_CW(atoi(argv[0]));
-  }
-  else{
-    chprintf((BaseSequentialStream *)&SD1,"test cannot run during running conditions\r\n");
-  }
-  chprintf((BaseSequentialStream *)&SD1,"IAC up test finished\r\n");
-  return;
+  mem_inj_data_off_deg(READ);
+  chprintf(chp,"%6i %6i %6i %6i %6i %6i %6i %6i %6i %6i %6i\r\n",
+	 inj_data_off_deg[0],
+	 inj_data_off_deg[1],
+	 inj_data_off_deg[2],
+	 inj_data_off_deg[3],
+	 inj_data_off_deg[4],
+	 inj_data_off_deg[5],
+	 inj_data_off_deg[6],
+	 inj_data_off_deg[7],
+	 inj_data_off_deg[8],
+	 inj_data_off_deg[9],
+	 inj_data_off_deg[10]
+	);
 }
 
-static void cmd_iacdown(BaseSequentialStream *chp, int argc, char *argv[]) {
-  (void)argv;
-  if(argc!=1){
-    chprintf(chp,"iad [number]\r\n");
-    return;
+static void cmd_save_injdur(BaseSequentialStream *chp, int argc, char *argv[]){
+  (void)argc;
+  (void)chp;
+  int i;
+  for(i=0;i<cdata;i++){
+    inj_data_dur_deg[i]=atoi(argv[i]);
   };
-  if(stt_run==0){
-    Iac_CCW(atoi(argv[0]));
-  }
-  else{
-    chprintf((BaseSequentialStream *)&SD1,"test cannot run during running conditions\r\n");
-  }
-  chprintf((BaseSequentialStream *)&SD1,"IAC down test finished\r\n");
-  return;
+  mem_inj_data_dur_deg(SAVE);
 }
+
+static void cmd_read_injdur(BaseSequentialStream *chp, int argc, char *argv[]){
+  (void)argc;
+  (void)chp;
+  (void)argv;
+  mem_inj_data_dur_deg(READ);
+  chprintf(chp,"%6i %6i %6i %6i %6i %6i %6i %6i %6i %6i %6i\r\n",
+	 inj_data_dur_deg[0],
+	 inj_data_dur_deg[1],
+	 inj_data_dur_deg[2],
+	 inj_data_dur_deg[3],
+	 inj_data_dur_deg[4],
+	 inj_data_dur_deg[5],
+	 inj_data_dur_deg[6],
+	 inj_data_dur_deg[7],
+	 inj_data_dur_deg[8],
+	 inj_data_dur_deg[9],
+	 inj_data_dur_deg[10]
+	);
+}
+
+static void cmd_save_ignoff(BaseSequentialStream *chp, int argc, char *argv[]){
+  (void)argc;
+  (void)chp;
+  int i;
+  for(i=0;i<cdata;i++){
+    ign_data_off_deg[i]=atoi(argv[i]);
+  };
+  mem_ign_data_off_deg(SAVE);
+}
+
+static void cmd_read_ignoff(BaseSequentialStream *chp, int argc, char *argv[]){
+  (void)argc;
+  (void)chp;
+  (void)argv;
+  mem_inj_data_dur_deg(READ);
+  chprintf(chp,"%6i %6i %6i %6i %6i %6i %6i %6i %6i %6i %6i\r\n",
+	 ign_data_off_deg[0],
+	 ign_data_off_deg[1],
+	 ign_data_off_deg[2],
+	 ign_data_off_deg[3],
+	 ign_data_off_deg[4],
+	 ign_data_off_deg[5],
+	 ign_data_off_deg[6],
+	 ign_data_off_deg[7],
+	 ign_data_off_deg[8],
+	 ign_data_off_deg[9],
+	 ign_data_off_deg[10]
+	);
+}
+
 
 static const ShellCommand commands[] = {
   {"data",cmd_data},
-  {"test",cmd_test},
-  {"iau",cmd_iacup},
-  {"iad",cmd_iacdown},
+  {"save_tps",cmd_save_tps},
+  {"read_tps",cmd_read_tps},
+  {"save_injoff",cmd_save_injoff},
+  {"read_injoff",cmd_read_injoff},
+  {"save_injdur",cmd_save_injdur},
+  {"read_injdur",cmd_read_injdur},
+  {"save_ignoff",cmd_save_ignoff},
+  {"read_ignoff",cmd_read_ignoff},
   {NULL, NULL}
 };
 
@@ -96,15 +145,12 @@ void Serial_Setup(void){
   palSetPadMode(GPIOA,9,16);
   palSetPadMode(GPIOA,10,2);
   sdStart(&SD1,NULL);
-  /*
-   * Shell manager initialization.
-   */
   shellInit();
 }
 
 void Shell_Setup(void){
-  if (!shelltp)
-      shelltp = shellCreate(&shell_cfg1, SHELL_WA_SIZE, NORMALPRIO); /* create shell tread */
+    if (!shelltp){
+      shelltp = shellCreate(&shell_cfg1, SHELL_WA_SIZE, NORMALPRIO);} /* create shell tread */
     else if (chThdTerminated(shelltp)) {
       chThdRelease(shelltp);    /* Recovers memory of the previous shell.   */
       shelltp = NULL;           /* Triggers spawning of a new shell.        */

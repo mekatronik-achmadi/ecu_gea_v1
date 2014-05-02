@@ -22,6 +22,12 @@
 #include "gea_sys.h"
 #include "gea_pal.h"
 #include "gea_gpt.h"
+#include "gea_mem.h"
+
+#include "stm32f10x_flash.h"
+#include "stm32f10x_eeprom.h"
+
+#define assert_param(expr) ((void)0)
 
 #endif
 

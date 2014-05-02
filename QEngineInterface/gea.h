@@ -49,9 +49,25 @@ private:
     QStringList strLstData;
 
     QStringList strVariable;
-    QString strTPS;
 
+    QString strTPS;
     int vstrTPS;
+
+    QString strRPM;
+    int vstrRPM;
+
+    QString strInjDurDeg;
+    int vstrInjDurDeg;
+
+    QString strInjOffDeg;
+    int vstrInjOffDeg;
+
+    QString strInjDurTick;
+    int vstrInjDurTick;
+    float vInjVol;
+
+    QString strIgnOffDeg;
+    int vstrIgnOffDeg;
 
 };
 

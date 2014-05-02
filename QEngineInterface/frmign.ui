@@ -25,7 +25,7 @@
    <property name="title">
     <string>Iginition Off Degre</string>
    </property>
-   <widget class="QLCDNumber" name="lcdNumber">
+   <widget class="QLCDNumber" name="lcdIgnOffDeg">
     <property name="geometry">
      <rect>
       <x>10</x>

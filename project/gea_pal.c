@@ -5,7 +5,6 @@ uint8_t iac_stt,iac_stt_prev;
 static WORKING_AREA(wa_iacThread, 128);
 static msg_t iacThread(void *arg) {
   (void)arg;
-  chRegSetThreadName("iac_control");
   while (TRUE) {
     
     if(rpm<1000){

@@ -3,6 +3,7 @@
 static adcsample_t samples[ADC_GRP1_NUM_CHANNELS * ADC_GRP1_BUF_DEPTH];
 
 adcsample_t adc_tps;
+adcsample_t adc_tps_val,adc_tps_close,adc_tps_full;
 uint32_t sum_adc_tps;
 
 void adccb(ADCDriver *adcp, adcsample_t *buffer, size_t n){
@@ -13,7 +14,8 @@ void adccb(ADCDriver *adcp, adcsample_t *buffer, size_t n){
     for(i=0;i<ADC_GRP1_BUF_DEPTH;i++){
 	sum_adc_tps=sum_adc_tps+samples[0+(i*ADC_GRP1_NUM_CHANNELS)];
      }
-     adc_tps=sum_adc_tps/10;
+     adc_tps_val=sum_adc_tps/10;
+     adc_tps=100*(adc_tps_val-adc_tps_close)/(adc_tps_full-adc_tps_close);
    }
  }
  
@@ -35,7 +37,6 @@ void adccb(ADCDriver *adcp, adcsample_t *buffer, size_t n){
 static WORKING_AREA(wa_adcThread, 128);
 static msg_t adcThread(void *arg) {
   (void)arg;
-  chRegSetThreadName("adc_trigger");
   while (TRUE) {
     chThdSleepMilliseconds(100);
     adcStartConversion(&ADCD1, &adcgrpcfg, samples, ADC_GRP1_BUF_DEPTH);

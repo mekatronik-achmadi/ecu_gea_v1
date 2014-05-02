@@ -9,7 +9,6 @@ uint8_t v_ovf;
 static WORKING_AREA(wa_ovfThread, 128);
 static msg_t ovfThread(void *arg) {
   (void)arg;
-  chRegSetThreadName("ovf_trigger");
   while (TRUE) {
     v_ovf++;
     if(v_ovf==5){

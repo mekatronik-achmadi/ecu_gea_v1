@@ -3,6 +3,10 @@
 
 int val_rpm;
 int val_tps;
+int val_injdurdeg;
+int val_injoffdeg;
+int val_injvol;
+int val_ignoffdeg;
 
 gea::gea(QWidget *parent) :
     QMainWindow(parent),port(0),
@@ -139,9 +143,30 @@ void gea::pollSerial(){
 
 void gea::parsingString(){
     strVariable=strData.split(",");
+
     strTPS=strVariable[1];
     vstrTPS=strTPS.toInt();
     val_tps= 100*vstrTPS/1450;
+
+    strRPM=strVariable[0];
+    vstrRPM=strRPM.toInt();
+    val_rpm=vstrRPM;
+
+    strInjDurDeg=strVariable[5];
+    vstrInjDurDeg=strInjDurDeg.toInt();
+    val_injdurdeg=vstrInjDurDeg;
+
+    strInjOffDeg=strVariable[7];
+    vstrInjOffDeg=strInjOffDeg.toInt();
+    val_injoffdeg=vstrInjOffDeg;
+
+    strInjDurTick=strVariable[6];
+    vstrInjDurTick=strInjDurTick.toInt();
+    val_injvol=(float) 40*(vstrInjDurTick/1000)*(val_rpm/60);
+
+    strIgnOffDeg=strVariable[4];
+    vstrIgnOffDeg=strIgnOffDeg.toInt();
+    val_ignoffdeg=vstrIgnOffDeg;
 }
 
 void gea::on_cmdRun_clicked()

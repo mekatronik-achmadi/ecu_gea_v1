@@ -2,6 +2,7 @@
 #define FRMIGN_H
 
 #include <QWidget>
+#include "gea.h"
 
 namespace Ui {
 class frmign;
@@ -15,8 +16,12 @@ public:
     explicit frmign(QWidget *parent = 0);
     ~frmign();
 
+private slots:
+    void setDisplay(void);
+
 private:
     Ui::frmign *ui;
+    QTimer timer;
 };
 
 #endif // FRMIGN_H

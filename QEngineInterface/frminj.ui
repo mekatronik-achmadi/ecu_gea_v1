@@ -25,7 +25,7 @@
    <property name="title">
     <string>Injection Duration Degree</string>
    </property>
-   <widget class="QLCDNumber" name="lcdNumber">
+   <widget class="QLCDNumber" name="lcdInjDurDeg">
     <property name="geometry">
      <rect>
       <x>10</x>
@@ -48,7 +48,7 @@
    <property name="title">
     <string>Injection Volume one sec</string>
    </property>
-   <widget class="QLCDNumber" name="lcdNumber_2">
+   <widget class="QLCDNumber" name="lcdInjVol">
     <property name="geometry">
      <rect>
       <x>10</x>
@@ -71,7 +71,7 @@
    <property name="title">
     <string>Injection Off Degre</string>
    </property>
-   <widget class="QLCDNumber" name="lcdNumber_3">
+   <widget class="QLCDNumber" name="lcdInjOffDeg">
     <property name="geometry">
      <rect>
       <x>10</x>

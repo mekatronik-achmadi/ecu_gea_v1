@@ -5,6 +5,8 @@
 #define bottom_tooth 21
 #define all_tooth 23
 
+#define cdata 11
+
 void ign_calc(void);
 void inj_calc(void);
 void ign_out(void);
