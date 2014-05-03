@@ -10,12 +10,15 @@ icucnt_t prev_last_period,rpm,frekuensi,misstooth;
 uint8_t toothcount;
 uint8_t inj_phase,ign_phase;
 
-uint16_t inj_data_off_deg[cdata]={10,12,14,16,18,20,25,25,25,25,25};
-uint16_t inj_data_dur_deg[cdata]={25,30,35,40,45,50,55,60,65,70,75};
+// uint16_t inj_data_off_deg[cdata]={10,12,14,16,18,20,25,25,25,25,25};
+// uint16_t inj_data_dur_deg[cdata]={25,30,35,40,45,50,55,60,65,70,75};
+uint16_t inj_data_off_deg[cdata];
+uint16_t inj_data_dur_deg[cdata];
 uint16_t data_tps[cdata]={0,10,20,30,40,50,60,70,80,90,100};
 
-uint16_t ign_data_off_deg[cdata]={10,12,15,18,19,20,21,21,23,23,21};
-uint16_t data_rpm[cdata]={0,500,1500,2000,2500,3000,3500,4000,4500,5000,5500};
+// uint16_t ign_data_off_deg[cdata]={10,12,15,18,19,20,21,21,23,23,21};
+uint16_t ign_data_off_deg[cdata];
+uint16_t data_rpm[cdata]={500,1000,1500,2000,2500,3000,3500,4000,4500,5000,5500};
 
 uint16_t ign_dur_deg=30,flow_rate=40;
 
@@ -155,14 +158,12 @@ void engine_ovf(void){
 }
 
 void data_send(void){
-  chprintf((BaseSequentialStream *)&SD1, "%6i,%6i,%6i,%6i,%6i,%6i,%6i,%6i\r\n",
+  chprintf((BaseSequentialStream *)&SD1, "%4i,%4i,%3i,%3i,%3i,%3i\r\n",
 	   rpm,
 	   adc_tps,
 	   ign_dur_deg,
-	   ign_dur_tick,
 	   ign_off_deg,
 	   inj_dur_deg,
-	   inj_dur_tick,
 	   inj_off_deg
 	  );
 }

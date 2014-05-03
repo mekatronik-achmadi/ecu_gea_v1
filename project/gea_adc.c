@@ -15,7 +15,9 @@ void adccb(ADCDriver *adcp, adcsample_t *buffer, size_t n){
 	sum_adc_tps=sum_adc_tps+samples[0+(i*ADC_GRP1_NUM_CHANNELS)];
      }
      adc_tps_val=sum_adc_tps/10;
-     adc_tps=100*(adc_tps_val-adc_tps_close)/(adc_tps_full-adc_tps_close);
+     if(adc_tps_full!=0){
+       if(adc_tps_val>=adc_tps_close){adc_tps=100*(adc_tps_val-adc_tps_close)/(adc_tps_full-adc_tps_close);}
+     }
    }
  }
  

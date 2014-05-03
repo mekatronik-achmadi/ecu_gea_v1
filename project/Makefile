@@ -55,7 +55,7 @@ endif
 #
 
 # Define project name here
-PROJECT = gea2
+PROJECT = gea
 
 # Imported source files and paths
 CHIBIOS = ..

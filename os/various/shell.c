@@ -152,7 +152,7 @@ static msg_t shell_thread(void *p) {
   chRegSetThreadName("shell");
 //   chprintf(chp, "\r\nChibiOS/RT Shell\r\n");
   while (TRUE) {
-//     chprintf(chp, "mamad_OS> ");
+    chprintf(chp, "mamad_OS> ");
     if (shellGetLine(chp, line, sizeof(line))) {
       chprintf(chp, "\r\nlogout");
       break;
@@ -182,7 +182,7 @@ static msg_t shell_thread(void *p) {
           usage(chp, "help");
           continue;
         }
-//         chprintf(chp, "Commands: help exit ");
+        chprintf(chp, "Commands: help exit ");
 	chprintf(chp, "Available Commands : \r\n");
 	chprintf(chp,"help\r\n");
         list_commands(chp, local_commands);
@@ -287,27 +287,27 @@ bool_t shellGetLine(BaseSequentialStream *chp, char *line, unsigned size) {
     if (chSequentialStreamRead(chp, (uint8_t *)&c, 1) == 0)
       return TRUE;
     if (c == 4) {
-//       chprintf(chp, "^D");
+      chprintf(chp, "^D");
       return TRUE;
     }
     if (c == 8) {
       if (p != line) {
-//         chSequentialStreamPut(chp, c);
-//         chSequentialStreamPut(chp, 0x20);
-//         chSequentialStreamPut(chp, c);
+        chSequentialStreamPut(chp, c);
+        chSequentialStreamPut(chp, 0x20);
+        chSequentialStreamPut(chp, c);
         p--;
       }
       continue;
     }
     if (c == '\r') {
-//       chprintf(chp, "\r\n");
+      chprintf(chp, "\r\n");
       *p = 0;
       return FALSE;
     }
     if (c < 0x20)
       continue;
     if (p < line + size - 1) {
-//       chSequentialStreamPut(chp, c);
+      chSequentialStreamPut(chp, c);
       *p++ = (char)c;
     }
   }

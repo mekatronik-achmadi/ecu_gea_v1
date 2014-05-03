@@ -3,7 +3,7 @@
 
 extern int val_injdurdeg;
 extern int val_injoffdeg;
-extern int val_injvol;
+extern float val_injvol;
 
 frminj::frminj(QWidget *parent) :
     QWidget(parent),
@@ -22,5 +22,4 @@ frminj::~frminj()
 void frminj::setDisplay(){
     ui->lcdInjDurDeg->display(QString::number(val_injdurdeg));
     ui->lcdInjOffDeg->display(QString::number(val_injoffdeg));
-    ui->lcdInjVol->display(QString::number(val_injvol));
 }

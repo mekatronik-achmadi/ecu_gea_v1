@@ -24,9 +24,9 @@ int main(int argc, char *argv[])
     Qt::WindowFlags winflag;
 
     winflag |= Qt::CustomizeWindowHint;
-//    winflag |= Qt::WindowTitleHint;
+    winflag |= Qt::WindowTitleHint;
 
-    mygea.setWindowFlags(winflag);
+    mygea.setWindowFlags(winflag | Qt::Dialog);
     myfrmrpm.setWindowFlags(winflag );
     myfrmtps.setWindowFlags(winflag );
     myfrmclk.setWindowFlags(winflag );

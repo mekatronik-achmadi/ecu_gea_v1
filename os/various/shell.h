@@ -29,14 +29,14 @@
  * @brief   Shell maximum input line length.
  */
 #if !defined(SHELL_MAX_LINE_LENGTH) || defined(__DOXYGEN__)
-#define SHELL_MAX_LINE_LENGTH       64
+#define SHELL_MAX_LINE_LENGTH       128
 #endif
 
 /**
  * @brief   Shell maximum arguments per command.
  */
 #if !defined(SHELL_MAX_ARGUMENTS) || defined(__DOXYGEN__)
-#define SHELL_MAX_ARGUMENTS         4
+#define SHELL_MAX_ARGUMENTS         12
 #endif
 
 /**

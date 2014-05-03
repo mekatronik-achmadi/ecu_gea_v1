@@ -1,8 +1,11 @@
 #ifndef GEA_H
 #define GEA_H
 
+#define cdata 11
+
 #include <QMainWindow>
 #include <QTimer>
+#include <QTime>
 #include <QMessageBox>
 
 #include "frmrpm.h"
@@ -32,9 +35,36 @@ private slots:
     void startStopComm(void);
     void pollSerial(void);
     void sendRequest(void);
-    void parsingString(void);
-
     void on_cmdRun_clicked();
+    void setInjOff(void);
+    void getInjOff(void);
+    void setInjDur(void);
+    void getInjDur(void);
+    void setIgnOff(void);
+    void getIgnOff(void);
+    void setTPS(void);
+    void getTPS(void);
+    void mydelay(int millisecondsToWait);
+
+    void on_cmdSetInjOff_clicked();
+
+    void on_cmdGetInjOff_clicked();
+
+    void on_cmdSetInjDur_clicked();
+
+    void on_cmdGetInjDur_clicked();
+
+    void on_cmdSetIgnOff_clicked();
+
+    void on_cmdGetIgnOff_clicked();
+
+    void on_cmdSetTPS_clicked();
+
+    void on_cmdGetTPS_clicked();
+
+    void on_cmdOnGet_clicked();
+
+    void on_cmdOffGet_clicked();
 
 private:
     Ui::gea *ui;
@@ -42,33 +72,7 @@ private:
     QTimer timer;
     QTimer dataTimer;
     QString deviceName;
-
-    int flagRun;
-    QString strData;
-    QString strTxtData;
-    QStringList strLstData;
-
-    QStringList strVariable;
-
-    QString strTPS;
-    int vstrTPS;
-
-    QString strRPM;
-    int vstrRPM;
-
-    QString strInjDurDeg;
-    int vstrInjDurDeg;
-
-    QString strInjOffDeg;
-    int vstrInjOffDeg;
-
-    QString strInjDurTick;
-    int vstrInjDurTick;
-    float vInjVol;
-
-    QString strIgnOffDeg;
-    int vstrIgnOffDeg;
-
+    QStringList tblHeader;
 };
 
 #endif // GEA_H
