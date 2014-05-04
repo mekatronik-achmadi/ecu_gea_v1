@@ -101,15 +101,18 @@ void engine_calc(void){
 
 void engine_set(void){
   if(toothcount==bottom_tooth){
-    inj_phase=0;
     ign_phase=0;
     
     chSysLockFromIsr();
-    gptStartOneShotI(&GPTD2, inj_on_tick);
-    chSysUnlockFromIsr();
-    
-    chSysLockFromIsr();
     gptStartOneShotI(&GPTD4, ign_on_tick);
+    chSysUnlockFromIsr();
+  }
+  
+  if(toothcount==top_tooth){
+    inj_phase=0;
+   
+    chSysLockFromIsr();
+    gptStartOneShotI(&GPTD2, inj_on_tick);
     chSysUnlockFromIsr();
   }
 }
