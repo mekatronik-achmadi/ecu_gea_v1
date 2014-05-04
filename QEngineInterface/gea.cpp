@@ -527,7 +527,7 @@ void gea::load_default(){
     };
 
 //    QString dataIgnOff="10,12,15,18,19,20,21,21,23,23,21";
-    QString dataIgnOff="10,15,15,25,25,25,35,35,35,30,30";
+    QString dataIgnOff="11,14,16,18,20,22,24,26,28,30,32";
     QStringList lstIgnOff=dataIgnOff.split(",");
     for(i=0;i<cdata;i++){
         QTableWidgetItem* item = new QTableWidgetItem();

@@ -121,6 +121,7 @@ void inj_out(void){
   if(inj_phase==0){
     on_inj1;
     on_inj2;
+    
     inj_phase=1;
     chSysLockFromIsr();
     gptStartOneShotI(&GPTD2, inj_dur_tick);
