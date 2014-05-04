@@ -45,6 +45,7 @@ private slots:
     void setTPS(void);
     void getTPS(void);
     void mydelay(int millisecondsToWait);
+    void load_default(void);
 
     void on_cmdSetInjOff_clicked();
 
@@ -65,6 +66,8 @@ private slots:
     void on_cmdOnGet_clicked();
 
     void on_cmdOffGet_clicked();
+
+    void on_actionDefault_triggered();
 
 private:
     Ui::gea *ui;

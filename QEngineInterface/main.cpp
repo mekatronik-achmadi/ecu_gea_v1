@@ -8,14 +8,14 @@ int main(int argc, char *argv[])
     gea mygea;
     frmrpm myfrmrpm;
     frmtps myfrmtps;
-    frmclk myfrmclk;
+//    frmclk myfrmclk;
     frmign myfrmign;
     frminj myfrminj;
 
     mygea.setWindowTitle("Main App");
     myfrmrpm.setWindowTitle("RPM");
     myfrmtps.setWindowTitle("TPS");
-    myfrmclk.setWindowTitle("Clock");
+//    myfrmclk.setWindowTitle("Clock");
     myfrmign.setWindowTitle("Ignition");
     myfrminj.setWindowTitle("Injection");
 
@@ -29,15 +29,15 @@ int main(int argc, char *argv[])
     mygea.setWindowFlags(winflag | Qt::Dialog);
     myfrmrpm.setWindowFlags(winflag );
     myfrmtps.setWindowFlags(winflag );
-    myfrmclk.setWindowFlags(winflag );
+//    myfrmclk.setWindowFlags(winflag );
     myfrmign.setWindowFlags(winflag );
     myfrminj.setWindowFlags(winflag );
 
     mygea.show();
     myfrmrpm.show();
-    myfrmtps.show();
-    myfrmclk.show();
     myfrmign.show();
+//    myfrmclk.show();
+    myfrmtps.show();
     myfrminj.show();
     
     return a.exec();

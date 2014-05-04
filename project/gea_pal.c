@@ -1,33 +1,7 @@
 #include "srcconf.h"
-extern icucnt_t rpm;
-uint8_t iac_stt,iac_stt_prev;
 
-static WORKING_AREA(wa_iacThread, 128);
-static msg_t iacThread(void *arg) {
-  (void)arg;
-  while (TRUE) {
-    
-    if(rpm<1000){
-      iac_stt=0;
-    }
-    else if(rpm>=1000){
-      iac_stt=1;
-    }
-    
-    if(iac_stt_prev!=iac_stt){
-      if(iac_stt==0){
-	Iac_CCW(30);
-      }
-      else if(iac_stt==1){
-	Iac_CW(30);
-      }
-    }
-    
-    iac_stt_prev=iac_stt;
-    
-  };
-  return 0;
-}
+extern adcsample_t adc_tps;
+extern icucnt_t rpm;
 
 void Pal_Setup(void){
   palSetPadMode(GPIOA,led,PAL_MODE_OUTPUT_PUSHPULL);
@@ -40,10 +14,10 @@ void Pal_Setup(void){
   palSetPadMode(GPIOB,IACA,PAL_MODE_OUTPUT_PUSHPULL);
   palSetPadMode(GPIOB,IACB,PAL_MODE_OUTPUT_PUSHPULL);
   palSetPadMode(GPIOB,IACC,PAL_MODE_OUTPUT_PUSHPULL);
-  palSetPadMode(GPIOB,IACD,PAL_MODE_OUTPUT_PUSHPULL);
-  
+  palSetPadMode(GPIOB,IACD,PAL_MODE_OUTPUT_PUSHPULL); 
 }
 
+//maju
 void Iac_CW(uint8_t loop){
   IACA_H;IACB_L;IACC_L;IACD_L; interval;interval;interval;
   uint8_t i;
@@ -67,13 +41,4 @@ void Iac_CCW(uint8_t loop){
     IACA_L;IACB_L;IACC_L;IACD_H; interval;
   }
   IACA_L;IACB_L;IACC_L;IACD_L; interval;
-}
-
-void Iac_Start(void){
-  Iac_CCW(30);
-  interval;
-  Iac_CCW(30);
-  interval;
-  Iac_CW(30);
-  chThdCreateStatic(wa_iacThread, sizeof(wa_iacThread), NORMALPRIO, iacThread, NULL);
 }

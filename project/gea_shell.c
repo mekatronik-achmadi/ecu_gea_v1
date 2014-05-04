@@ -106,6 +106,7 @@ static void cmd_save_injdur(BaseSequentialStream *chp, int argc, char *argv[]){
     inj_data_dur_deg[i]=atoi(argv[i]);
   };
   mem_inj_data_dur_deg(SAVE);
+  chprintf(chp,"injdur data set");
   return;
 }
 
@@ -142,6 +143,7 @@ static void cmd_save_ignoff(BaseSequentialStream *chp, int argc, char *argv[]){
     ign_data_off_deg[i]=atoi(argv[i]);
   };
   mem_ign_data_off_deg(SAVE);
+  chprintf(chp,"ignoff data set");
   return;
 }
 
@@ -168,6 +170,25 @@ static void cmd_read_ignoff(BaseSequentialStream *chp, int argc, char *argv[]){
   return;
 }
 
+static void cmd_iac_up(BaseSequentialStream *chp, int argc, char *argv[]){
+  if(argc!=1){
+    chprintf(chp,"bad commands");
+    return;
+  }
+  Iac_CW(atoi(argv[0]));
+  chprintf(chp,"iac up for %3i",atoi(argv[0]));
+  return;
+}
+
+static void cmd_iac_down(BaseSequentialStream *chp, int argc, char *argv[]){
+  if(argc!=1){
+    chprintf(chp,"bad commands");
+    return;
+  }
+  Iac_CCW(atoi(argv[0]));
+  chprintf(chp,"iac down for %3i",atoi(argv[0]));
+  return;
+}
 
 static const ShellCommand commands[] = {
   {"data",cmd_data},
@@ -180,6 +201,8 @@ static const ShellCommand commands[] = {
   {"read_injdur",cmd_read_injdur},
   {"save_ignoff",cmd_save_ignoff},
   {"read_ignoff",cmd_read_ignoff},
+  {"iac_up",cmd_iac_up},
+  {"iac_down",cmd_iac_down},
   {NULL, NULL}
 };
 

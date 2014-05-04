@@ -41,8 +41,6 @@
 #define IACD_H palSetPad(GPIOB,IACD)
 #define IACD_L palClearPad(GPIOB,IACD)
 
-// add handler to using IAC
-
 void Pal_Setup(void);
 void Iac_CW(uint8_t loop);
 void Iac_CCW(uint8_t loop);
