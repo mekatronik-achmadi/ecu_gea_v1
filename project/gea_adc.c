@@ -16,8 +16,6 @@ void adccb(ADCDriver *adcp, adcsample_t *buffer, size_t n){
      }
      adc_tps_val=sum_adc_tps/10;
      
-//      adc_tps_full=1385;adc_tps_close=195;
-     
      if(adc_tps_full!=0){
        if(adc_tps_val>=adc_tps_close){adc_tps=100*(adc_tps_val-adc_tps_close)/(adc_tps_full-adc_tps_close);}
      }
@@ -53,4 +51,5 @@ void Adc_Setup(void){
   palSetPadMode(GPIOA,0,PAL_MODE_INPUT_ANALOG);
   adcStart(&ADCD1, NULL);
   chThdCreateStatic(wa_adcThread, sizeof(wa_adcThread), NORMALPRIO, adcThread, NULL);
+  adc_tps_full=1385;adc_tps_close=195;
 }
