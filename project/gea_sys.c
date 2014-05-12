@@ -45,7 +45,7 @@ uint16_t ign_data_off_deg[cdata][cdata]={
 uint16_t data_tps[cdata]={0,10,15,20,30,40,50,60,70,80,90,100};
 uint16_t data_rpm[cdata]={500,750,1000,1250,1500,2000,2500,3000,4000,5000,5500,6000};
 
-uint16_t inj_dur_deg,inj_dur_deg_out,inj_dur_tick;
+uint16_t inj_dur_deg,inj_dur_deg_out,inj_on_deg,inj_on_tick;
 uint16_t ign_off_deg,ign_off_deg_out,ign_off_tick;
 
 uint16_t one_deg_tick,deg_per_tooth;
@@ -91,9 +91,10 @@ void inj_ign(void){
     inj_dur_deg=inj_data_dur_deg[tps_index][rpm_index];
     ign_off_deg=ign_data_off_deg[tps_index][rpm_index];
     
-    inj_dur_deg=inj_dur_deg/2;
-    inj_dur_deg_out=inj_dur_deg*60/100;
-    inj_dur_tick=inj_dur_deg_out*one_deg_tick;
+    inj_dur_deg_out=inj_dur_deg*90/100;
+    
+    inj_on_deg=90-inj_dur_deg_out;
+    inj_on_tick=inj_on_deg*one_deg_tick;
     
     ign_off_deg_out=45-ign_off_deg;
     ign_off_tick=ign_off_deg_out*one_deg_tick;
@@ -127,13 +128,14 @@ void engine_calc(void){
 void engine_set(void){
   
   if(toothcount==inj_start_tooth){
-    
-    on_inj1;
-    on_inj2;
-    
     chSysLockFromIsr();
-    gptStartOneShotI(&GPTD2, inj_dur_tick);
+    gptStartOneShotI(&GPTD2, inj_on_tick);
     chSysUnlockFromIsr();
+  }
+  
+  if(toothcount==inj_stop_tooth){
+    off_inj1;
+    off_inj2;
   }
   
   if(toothcount==ign_charge_tooth){
@@ -162,8 +164,8 @@ void engine_notimer(void){
 }
 
 void inj_out(void){
-  off_inj1;
-  off_inj2;
+  on_inj1;
+  on_inj2;
 }
 
 void ign_out(void){
@@ -188,7 +190,7 @@ void data_send(void){
   chprintf((BaseSequentialStream *)&SD1, "%4i,%4i,%5i,%5i,%5i,%5i,%3i\r\n",
 	   rpm,
 	   adc_tps,
-	   inj_dur_tick,
+	   inj_on_tick,
 	   ign_off_tick,
 	   last_period,
 	   one_deg_tick,
