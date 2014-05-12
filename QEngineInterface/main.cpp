@@ -9,15 +9,15 @@ int main(int argc, char *argv[])
     frmrpm myfrmrpm;
     frmtps myfrmtps;
 //    frmclk myfrmclk;
-    frmign myfrmign;
-    frminj myfrminj;
+//    frmign myfrmign;
+//    frminj myfrminj;
 
     mygea.setWindowTitle("Main App");
     myfrmrpm.setWindowTitle("RPM");
     myfrmtps.setWindowTitle("TPS");
 //    myfrmclk.setWindowTitle("Clock");
-    myfrmign.setWindowTitle("Ignition");
-    myfrminj.setWindowTitle("Injection");
+//    myfrmign.setWindowTitle("Ignition");
+//    myfrminj.setWindowTitle("Injection");
 
     //http://qt-project.org/doc/qt-5/qt.html#WindowFlags-typedef
 
@@ -30,15 +30,15 @@ int main(int argc, char *argv[])
     myfrmrpm.setWindowFlags(winflag );
     myfrmtps.setWindowFlags(winflag );
 //    myfrmclk.setWindowFlags(winflag );
-    myfrmign.setWindowFlags(winflag );
-    myfrminj.setWindowFlags(winflag );
+//    myfrmign.setWindowFlags(winflag );
+//    myfrminj.setWindowFlags(winflag );
 
     mygea.show();
     myfrmrpm.show();
-    myfrmign.show();
-//    myfrmclk.show();
     myfrmtps.show();
-    myfrminj.show();
+//    myfrmign.show();
+//    myfrmclk.show();
+//    myfrminj.show();
     
     return a.exec();
 }
