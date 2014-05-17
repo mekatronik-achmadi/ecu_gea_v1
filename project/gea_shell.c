@@ -211,11 +211,22 @@ static const ShellConfig shell_cfg1 = {
   commands
 };
 
+static WORKING_AREA(wa_dataThread, 128);
+static msg_t dataThread(void *arg) {
+  (void)arg;
+  while (TRUE) {
+    data_send();
+    chThdSleepMilliseconds(500);   
+  }
+  return 0;
+}
+
 void Serial_Setup(void){
   palSetPadMode(GPIOA,9,16);
   palSetPadMode(GPIOA,10,2);
   sdStart(&SD1,NULL);
   shellInit();
+  chThdCreateStatic(wa_dataThread, sizeof(wa_dataThread), NORMALPRIO, dataThread, NULL);
 }
 
 void Shell_Setup(void){

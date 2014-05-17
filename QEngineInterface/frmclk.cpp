@@ -23,7 +23,7 @@ QwtDial *frmclk::createDial(void){
     clock->scaleDraw()->setTickLength( QwtScaleDiv::MinorTick, 0 );
     clock->setLineWidth(6);
     clock->setFrameShadow(QwtDial::Sunken);
-    clock->setTime();
+//    clock->setTime();
     QTimer *timer = new QTimer(clock);
     timer->connect(timer, SIGNAL(timeout()), clock, SLOT(setCurrentTime()));
     timer->start(1000);

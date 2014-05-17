@@ -26,7 +26,6 @@ static void icuperiodcb(ICUDriver *icup) {
   engine_calc();
   inj_ign();
   engine_set();
-//   engine_notimer();
 }
 
 

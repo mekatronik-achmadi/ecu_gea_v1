@@ -7,8 +7,9 @@
 #include <QLayout>
 #include <QTimer>
 #include <QTabWidget>
-#include <qwt/qwt_dial.h>
-#include <qwt/qwt_analog_clock.h>
+#include <qwt_dial.h>
+#include <qwt_analog_clock.h>
+#include <qwt_round_scale_draw.h>
 
 class QwtDial;
 class QwtAnalogClock;

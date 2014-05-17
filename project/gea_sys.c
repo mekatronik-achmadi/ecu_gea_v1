@@ -1,5 +1,7 @@
 #include "srcconf.h"
 
+#define inj_ms_base 5
+
 extern adcsample_t adc_tps;
 
 extern icucnt_t last_period;
@@ -7,7 +9,7 @@ icucnt_t prev_last_period,rpm,frekuensi,misstooth;
 
 uint8_t toothcount;
 
-uint16_t inj_data_dur_deg[cdata][cdata]={
+uint16_t inj_data_ms_perc[cdata][cdata]={
   
   //    500,	750,	1000,	1250,	1500,	2000,	2500,	3000,	4000,	5000,	5500,	6000
   {	44,	26,	13,	 4,	 0,	 0,	 0,	 0,	 0,	 0,	 0,	 0}, // 0
@@ -45,12 +47,33 @@ uint16_t ign_data_off_deg[cdata][cdata]={
 uint16_t data_tps[cdata]={0,10,15,20,30,40,50,60,70,80,90,100};
 uint16_t data_rpm[cdata]={500,750,1000,1250,1500,2000,2500,3000,4000,5000,5500,6000};
 
-uint16_t inj_dur_deg,inj_dur_deg_out,inj_on_deg,inj_on_tick;
-uint16_t ign_off_deg,ign_off_deg_out,ign_off_tick;
+uint16_t inj_ms_perc,inj_ms_tick;
+uint16_t ign_off_deg,ign_off_deg_out,ign_off_tick,one_deg_tick;
 
-uint16_t one_deg_tick,deg_per_tooth;
+uint8_t rpm_index,tps_index;
 
-uint8_t rpm_index,tps_index,rpm_fx;
+void engine_calc(void){
+  
+  if(last_period > 0){
+    misstooth = (prev_last_period*100) / last_period;
+    prev_last_period =  last_period; 
+  } 
+  
+  if((misstooth>40)&&(misstooth<60)){  
+    toothcount=0;
+  }
+  else{
+    frekuensi = F_ICU / last_period;
+    rpm = frekuensi*60/(all_tooth+1);
+    
+    one_deg_tick=last_period/deg_per_tooth;
+    
+    toothcount++;
+  }
+  
+  if(toothcount==all_tooth+1){toothcount=0;}
+  if(toothcount==all_tooth+2){toothcount=1;} 
+}
 
 void inj_ign(void){
   
@@ -88,84 +111,47 @@ void inj_ign(void){
     }
     
   
-    inj_dur_deg=inj_data_dur_deg[tps_index][rpm_index];
+    inj_ms_perc=inj_data_ms_perc[tps_index][rpm_index];
     ign_off_deg=ign_data_off_deg[tps_index][rpm_index];
     
-    inj_dur_deg_out=inj_dur_deg*90/100;
+    inj_ms_tick=(inj_ms_perc*inj_ms_base)+inj_open_time;
     
-    inj_on_deg=90-inj_dur_deg_out;
-    inj_on_tick=inj_on_deg*one_deg_tick;
-    
-    ign_off_deg_out=45-ign_off_deg;
+    ign_off_deg_out=31-ign_off_deg;
     ign_off_tick=ign_off_deg_out*one_deg_tick;
-    
-}
-
-void engine_calc(void){
-  
-  if(last_period > 0){
-    misstooth = (prev_last_period*100) / last_period;
-    prev_last_period =  last_period; 
-  } 
-  
-  if((misstooth>40)&&(misstooth<60)){  
-    toothcount=0;
-  }
-  else{
-    frekuensi = F_ICU / last_period;
-    rpm = frekuensi*60/(all_tooth+1);
-    
-    deg_per_tooth=360/(all_tooth+1);
-    one_deg_tick=last_period/deg_per_tooth;
-    
-    toothcount++;
-  }
-  
-  if(toothcount==all_tooth+1){toothcount=0;}
-  if(toothcount==all_tooth+2){toothcount=1;} 
 }
 
 void engine_set(void){
   
-  if(toothcount==inj_start_tooth){
+  if(toothcount==intake_port_open){
+    
+    on_inj1;
+    on_inj2;
+    
     chSysLockFromIsr();
-    gptStartOneShotI(&GPTD2, inj_on_tick);
+    gptStartOneShotI(&GPTD2, inj_ms_tick);
     chSysUnlockFromIsr();
   }
   
-  if(toothcount==inj_stop_tooth){
+  if(toothcount==intake_port_close){
     off_inj1;
     off_inj2;
   }
   
-  if(toothcount==ign_charge_tooth){
+  if(toothcount==coil_on){
     on_ign1;
     on_ign2;
   }
   
-  if(toothcount==ign_discharge_tooth){
+  if(toothcount==coil_off){
     chSysLockFromIsr();
     gptStartOneShotI(&GPTD4, ign_off_tick);
     chSysUnlockFromIsr();
   }
 }
-  
-void engine_notimer(void){
-  
-  if(toothcount==top_tooth-5){
-    on_ign1;
-    on_ign2;
-  }
-  
-  if(toothcount==top_tooth){
-    off_ign1;
-    off_ign2;
-  }
-}
 
 void inj_out(void){
-  on_inj1;
-  on_inj2;
+  off_inj1;
+  off_inj2;
 }
 
 void ign_out(void){
@@ -184,16 +170,12 @@ void engine_ovf(void){
   off_inj2;
   off_ign1;
   off_ign2;
+  
 }
 
 void data_send(void){
-  chprintf((BaseSequentialStream *)&SD1, "%4i,%4i,%5i,%5i,%5i,%5i,%3i\r\n",
-	   rpm,
-	   adc_tps,
-	   inj_on_tick,
-	   ign_off_tick,
-	   last_period,
-	   one_deg_tick,
-	   deg_per_tooth
-	  );
+  chprintf((BaseSequentialStream *)&SD1,
+    "%6i,%6i,%6i,%6i,%6i,%6i,%6i\r\n",
+    rpm,adc_tps,inj_ms_perc,inj_ms_tick,ign_off_deg,ign_off_tick,one_deg_tick
+  );
 }
