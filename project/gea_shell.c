@@ -226,7 +226,7 @@ void Serial_Setup(void){
   palSetPadMode(GPIOA,10,2);
   sdStart(&SD1,NULL);
   shellInit();
-  chThdCreateStatic(wa_dataThread, sizeof(wa_dataThread), NORMALPRIO, dataThread, NULL);
+  //chThdCreateStatic(wa_dataThread, sizeof(wa_dataThread), NORMALPRIO, dataThread, NULL);
 }
 
 void Shell_Setup(void){

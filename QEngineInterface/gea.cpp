@@ -39,6 +39,8 @@ gea::gea(QWidget *parent) :
     tblHeader<<"3500";tblHeader<<"4000";tblHeader<<"4500";tblHeader<<"5000";tblHeader<<"5500";
 
     ui->tblIgnOff->setHorizontalHeaderLabels(tblHeader);
+
+
 }
 
 gea::~gea()

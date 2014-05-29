@@ -1,0 +1,13 @@
+R-1k 	http://sfe-electronics.com/index.php?id_product=623&controller=product
+R-4k7 	http://sfe-electronics.com/index.php?id_product=629&controller=product
+R-330	http://sfe-electronics.com/index.php?id_product=619&controller=product
+C-22pF	http://sfe-electronics.com/index.php?id_product=107&controller=product
+C-100nF	http://sfe-electronics.com/index.php?id_product=129&controller=product
+C-100uF	http://sfe-electronics.com/index.php?id_product=237&controller=product
+9013	http://sfe-electronics.com/index.php?id_product=1251&controller=product
+3904	http://sfe-electronics.com/index.php?id_product=1249&controller=product
+IRLZ44	http://sfe-electronics.com/index.php?id_product=1271&controller=product
+7805	http://sfe-electronics.com/index.php?id_product=903&controller=product
+LED		http://sfe-electronics.com/index.php?id_category=59&controller=category
+Diode	http://sfe-electronics.com/index.php?id_product=882&controller=product
+Z-3v3	http://sfe-electronics.com/index.php?id_product=876&controller=product
