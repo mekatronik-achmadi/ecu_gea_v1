@@ -51,5 +51,5 @@ void Adc_Setup(void){
   palSetPadMode(GPIOA,0,PAL_MODE_INPUT_ANALOG);
   adcStart(&ADCD1, NULL);
   chThdCreateStatic(wa_adcThread, sizeof(wa_adcThread), NORMALPRIO, adcThread, NULL);
-  adc_tps_full=1385;adc_tps_close=195;
+  //adc_tps_full=1385;adc_tps_close=195;
 }

@@ -1,22 +1,28 @@
 #-------------------------------------------------
 #
-# Project created by QtCreator 2014-05-28T22:58:58
+# Project created by QtCreator 2014-06-05T18:26:17
 #
 #-------------------------------------------------
 
-QT       += core gui widgets
-QT += serialport
+QT       += core gui serialport
+
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = interface
 TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        qtinterface.cpp
+        interface.cpp \
+    dial_meter.cpp \
+    dial_display.cpp
 
-HEADERS  += qtinterface.h
+HEADERS  += interface.h \
+    dial_meter.h \
+    dial_display.h
 
-FORMS    += qtinterface.ui
+FORMS    += interface.ui
 
-#INCLUDEPATH += /usr/local/qwt-6.1.0/include
-#LIBS += -L/usr/local/qwt-6.1.0/lib -lqwt
+CONFIG += qwt
+INCLUDEPATH += /usr/local/qwt-6.1.0/include
+LIBS += -L/usr/local/qwt-6.1.0/lib -lqwt

@@ -134,7 +134,7 @@ void gea::sendRequest(){
     QByteArray dataReq="data\r";
     port->write(dataReq);
 
-    mydelay(delay_val);
+    mydelay (delay_val);
 
     QString strData=ui->txtData->toPlainText();
 

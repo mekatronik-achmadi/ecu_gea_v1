@@ -304,6 +304,11 @@ bool_t shellGetLine(BaseSequentialStream *chp, char *line, unsigned size) {
       *p = 0;
       return FALSE;
     }
+    if (c == '\n') {
+//       chprintf(chp, "\n");
+      *p = 0;
+      return FALSE;
+    }
     if (c < 0x20)
       continue;
     if (p < line + size - 1) {

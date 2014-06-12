@@ -3,10 +3,8 @@
 volatile uint16_t VirtAddVarTab[NumbOfVar];
 
 extern adcsample_t adc_tps_close,adc_tps_full;
-
-extern uint16_t inj_data_off_deg[cdata];
-extern uint16_t inj_data_dur_deg[cdata];
-extern uint16_t ign_data_off_deg[cdata];
+extern uint16_t inj_data_ms_perc[cdata][cdata];
+extern uint16_t ign_data_off_deg[cdata][cdata];
 
 void Mem_Setup(void){
   FLASH_Unlock();
@@ -35,48 +33,50 @@ void mem_adc(uint8_t mode){
   }
 }
 
-void mem_inj_data_off_deg(uint8_t mode){
-  int i=0;
+
+void mem_inj_data(uint8_t idx_tps,uint8_t idx_rpm,uint8_t mode){
+  int i,j;
   
-  for(i=0;i<cdata;i++){
-    if(mode==0){
-      save_mem(e_inj_data_off_deg+i,inj_data_off_deg[i]);
-    }
-    else if(mode==1){
-      inj_data_off_deg[i]=read_mem(e_inj_data_off_deg+i);
-    }
+  i=idx_tps;
+  j=idx_rpm;
+  
+  if(mode==0){
+     save_mem(e_inj_data+(i*cdata)+j,inj_data_ms_perc[i][j]);
+  }
+  else if(mode==1){
+     inj_data_ms_perc[i][j]=read_mem(e_inj_data+(i*cdata)+j);
   }
 }
 
-void mem_inj_data_dur_deg(uint8_t mode){
-  int i=0;
+void mem_ign_data(uint8_t idx_tps,uint8_t idx_rpm,uint8_t mode){
+  int i,j;
   
-  for(i=0;i<cdata;i++){
-    if(mode==0){
-      save_mem(e_inj_data_dur_deg+i,inj_data_dur_deg[i]);
-    }
-    else if(mode==1){
-      inj_data_dur_deg[i]=read_mem(e_inj_data_dur_deg+i);
-    }
+  i=idx_tps;
+  j=idx_rpm;
+  
+  if(mode==0){
+     save_mem(e_ign_data+(i*cdata)+j,ign_data_off_deg[i][j]);
   }
-}
-
-void mem_ign_data_off_deg(uint8_t mode){
-  int i=0;
-  
-  for(i=0;i<cdata;i++){
-    if(mode==0){
-      save_mem(e_ign_data_off_deg+i,ign_data_off_deg[i]);
-    }
-    else if(mode==1){
-      ign_data_off_deg[i]=read_mem(e_ign_data_off_deg+i);
-    }
+  else if(mode==1){
+     ign_data_off_deg[i][j]=read_mem(e_ign_data+(i*cdata)+j);
   }
 }
 
 void mem_load_all(void){
   mem_adc(READ);
-  mem_inj_data_off_deg(READ);
-  mem_inj_data_dur_deg(READ);
-  mem_ign_data_off_deg(READ);
+  
+  uint8_t i,j;
+  
+  for(i=0;i<cdata;i++){
+	  for(j=0;j<cdata;j++){
+		  mem_inj_data(i,j,READ);
+	  }
+  }
+  
+  for(i=0;i<cdata;i++){
+	  for(j=0;j<cdata;j++){
+		  mem_ign_data(i,j,READ);
+	  }
+  }
+  
 }

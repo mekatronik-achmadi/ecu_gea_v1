@@ -17,7 +17,7 @@ int main(void) {
   /*
    * Project defined HAL Setup
    */
-//   Mem_Setup();
+  Mem_Setup();
   Pal_Setup();
   Serial_Setup();
   Icu_Setup();
