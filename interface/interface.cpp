@@ -13,6 +13,8 @@ int id_tps;
 
 int defaultTPS[2]={195,1395};
 
+int defaultInjec[2]={5,200};
+
 int defaultInj[cdata][cdata]={
   {	44,	26,	13,	 4,	 0,	 0,	 0,	 0,	 0,	 0,	 0,	 0},
   {	26,	29,	33,	35,	37,	40,	42,	44,	51,	55,	57,	59},
@@ -105,6 +107,30 @@ void interface::on_btnOpen_clicked()
             my_port->setParity(QSerialPort::NoParity);
             QMessageBox::information(this,"success","port success on "+dev_name );
             ui->btnOpen->setText("Close");
+
+
+            ui->btnMonitor->setEnabled(true);
+            ui->txtCommData->setEnabled(true);
+            ui->txtTPSFull->setEnabled(true);
+            ui->txtTPSOff->setEnabled(true);
+            ui->btnTPSFullGet->setEnabled(true);
+            ui->btnTPSOffGet->setEnabled(true);
+            ui->btnTPSGet->setEnabled(true);
+            ui->btnTPSSet->setEnabled(true);
+            ui->btnIgnGet->setEnabled(true);
+            ui->btnIgnSet->setEnabled(true);
+            ui->tblIgn->setEnabled(true);
+            ui->btnInjGet->setEnabled(true);
+            ui->btnInjSet->setEnabled(true);
+            ui->tblInj->setEnabled(true);
+            ui->txtBaseMs->setEnabled(true);
+            ui->txtOpenMs->setEnabled(true);
+            ui->btnInjecGet->setEnabled(true);
+            ui->btnInjecSet->setEnabled(true);
+            ui->txtIAC->setEnabled(true);
+            ui->btnIACUp->setEnabled(true);
+            ui->btnIACDown->setEnabled(true);
+            ui->cmbPort->setEnabled(false);
         }
         else{
             QMessageBox::critical(this,"Failed","port failed on "+dev_name);
@@ -116,6 +142,31 @@ void interface::on_btnOpen_clicked()
         if(my_port->isOpen()){
             my_port->close();
         }
+
+
+        ui->btnMonitor->setEnabled(false);
+        ui->txtCommData->setEnabled(false);
+        ui->txtTPSFull->setEnabled(false);
+        ui->txtTPSOff->setEnabled(false);
+        ui->btnTPSFullGet->setEnabled(false);
+        ui->btnTPSOffGet->setEnabled(false);
+        ui->btnTPSGet->setEnabled(false);
+        ui->btnTPSSet->setEnabled(false);
+        ui->btnIgnGet->setEnabled(false);
+        ui->btnIgnSet->setEnabled(false);
+        ui->tblIgn->setEnabled(false);
+        ui->btnInjGet->setEnabled(false);
+        ui->btnInjSet->setEnabled(false);
+        ui->tblInj->setEnabled(false);
+        ui->txtBaseMs->setEnabled(false);
+        ui->txtOpenMs->setEnabled(false);
+        ui->btnInjecGet->setEnabled(false);
+        ui->btnInjecSet->setEnabled(false);
+        ui->txtIAC->setEnabled(false);
+        ui->btnIACUp->setEnabled(false);
+        ui->btnIACDown->setEnabled(false);
+        ui->cmbPort->setEnabled(true);
+
         ui->btnOpen->setText("Open");
     }
 }
@@ -132,6 +183,7 @@ void interface::read_data(){
     else if(data_target==parse_target){parse_data(ui->txtCommData->toPlainText());}
     else if(data_target==INJRead_target){inj_get(ui->txtCommData->toPlainText());}
     else if(data_target==IGNRead_target){ign_get(ui->txtCommData->toPlainText());}
+    else if(data_target==INJECRead_target){injec_get(ui->txtCommData->toPlainText());}
 }
 
 void interface::req_data(){
@@ -148,10 +200,45 @@ void interface::on_btnMonitor_clicked()
 
         tmrdatareq->start(100);
         ui->btnMonitor->setText("Setting");
+
+        ui->btnTPSGet->setEnabled(false);
+        ui->btnTPSSet->setEnabled(false);
+        ui->btnTPSFullGet->setEnabled(false);
+        ui->btnTPSOffGet->setEnabled(false);
+        ui->btnIgnGet->setEnabled(false);
+        ui->btnIgnSet->setEnabled(false);
+        ui->btnInjGet->setEnabled(false);
+        ui->btnInjSet->setEnabled(false);
+        ui->txtBaseMs->setEnabled(false);
+        ui->txtOpenMs->setEnabled(false);
+        ui->btnInjecGet->setEnabled(false);
+        ui->btnInjecSet->setEnabled(false);
+        ui->txtIAC->setEnabled(false);
+        ui->btnIACUp->setEnabled(false);
+        ui->btnIACDown->setEnabled(false);
+        ui->btnOpen->setEnabled(false);
     }
     else{
         tmrdatareq->stop();
+
         ui->btnMonitor->setText("Monitor");
+
+        ui->btnTPSGet->setEnabled(true);
+        ui->btnTPSSet->setEnabled(true);
+        ui->btnTPSFullGet->setEnabled(true);
+        ui->btnTPSOffGet->setEnabled(true);
+        ui->btnIgnGet->setEnabled(true);
+        ui->btnIgnSet->setEnabled(true);
+        ui->btnInjGet->setEnabled(true);
+        ui->btnInjSet->setEnabled(true);
+        ui->txtBaseMs->setEnabled(true);
+        ui->txtOpenMs->setEnabled(true);
+        ui->btnInjecGet->setEnabled(true);
+        ui->btnInjecSet->setEnabled(true);
+        ui->txtIAC->setEnabled(true);
+        ui->btnIACUp->setEnabled(true);
+        ui->btnIACDown->setEnabled(true);
+        ui->btnOpen->setEnabled(true);
     }
 }
 
@@ -230,6 +317,9 @@ void interface::tps_get(QString strInput){
 void interface::on_actionDefault_triggered()
 {
     int i,j;
+
+    ui->txtBaseMs->setText(QString::number(defaultInjec[0]));
+    ui->txtOpenMs->setText(QString::number(defaultInjec[1]));
 
     ui->txtTPSOff->setText(QString::number(defaultTPS[0]));
     ui->txtTPSFull->setText(QString::number(defaultTPS[1]));
@@ -418,4 +508,64 @@ void interface::ign_get(QString strInput){
     tbl_item->setText(strVal[2]);
     ui->tblIgn->setItem(i,j,tbl_item);
     waitComm=0;
+}
+
+void interface::on_btnInjecSet_clicked()
+{
+    ui->txtCommData->clear();
+    data_target=no_target;
+
+    QByteArray dataInjec;
+    dataInjec="save_injec";
+
+    dataInjec+=" ";
+    dataInjec+= ui->txtBaseMs->text();
+
+    dataInjec+=" ";
+    dataInjec+= ui->txtOpenMs->text();
+
+    dataInjec+="\n";
+
+    my_port->write(dataInjec);
+}
+
+void interface::on_btnInjecGet_clicked()
+{
+    ui->txtCommData->clear();
+    data_target=INJECRead_target;
+    QByteArray injec_req_data="read_injec\n";
+    my_port->write(injec_req_data);
+}
+
+void interface::injec_get(QString strInput){
+    QStringList strVal= strInput.split(",");
+
+    if(strVal.count()<2){return;}
+
+    ui->txtBaseMs->setText(strVal[0]);
+    ui->txtOpenMs->setText(strVal[1]);
+}
+
+void interface::on_btnIACUp_clicked()
+{
+    ui->txtCommData->clear();
+    data_target=no_target;
+    int IACval=ui->txtIAC->text().toInt();
+    QByteArray iac_up_req_data="iac_up";
+    iac_up_req_data += " ";
+    iac_up_req_data += QString::number(IACval).toUtf8();
+    iac_up_req_data += "\n";
+    my_port->write(iac_up_req_data);
+}
+
+void interface::on_btnIACDown_clicked()
+{
+    ui->txtCommData->clear();
+    data_target=no_target;
+    int IACval=ui->txtIAC->text().toInt();
+    QByteArray iac_down_req_data="iac_down";
+    iac_down_req_data += " ";
+    iac_down_req_data += QString::number(IACval).toUtf8();
+    iac_down_req_data += "\n";
+    my_port->write(iac_down_req_data);
 }

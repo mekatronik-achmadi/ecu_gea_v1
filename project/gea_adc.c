@@ -2,8 +2,8 @@
 
 static adcsample_t samples[ADC_GRP1_NUM_CHANNELS * ADC_GRP1_BUF_DEPTH];
 
-adcsample_t adc_tps;
-adcsample_t adc_tps_val,adc_tps_close,adc_tps_full;
+adcsample_t adc_tps,adc_tps_val;
+extern adcsample_t adc_tps_close,adc_tps_full;
 uint32_t sum_adc_tps;
 
 void adccb(ADCDriver *adcp, adcsample_t *buffer, size_t n){
@@ -51,5 +51,4 @@ void Adc_Setup(void){
   palSetPadMode(GPIOA,0,PAL_MODE_INPUT_ANALOG);
   adcStart(&ADCD1, NULL);
   chThdCreateStatic(wa_adcThread, sizeof(wa_adcThread), NORMALPRIO, adcThread, NULL);
-  //adc_tps_full=1385;adc_tps_close=195;
 }

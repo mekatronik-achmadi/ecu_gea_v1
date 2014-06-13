@@ -18,9 +18,8 @@
 
 #define cdata 12
 
-#define inj_open_time 200
-#define engine_vol 650
-#define engine_flow_sec 3.3
+//#define engine_vol 650
+//#define engine_flow_sec 3.3
 
 void inj_ign(void);
 void ign_out(void);

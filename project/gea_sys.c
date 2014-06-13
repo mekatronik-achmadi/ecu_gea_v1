@@ -1,7 +1,5 @@
 #include "srcconf.h"
 
-#define inj_ms_base 5
-
 extern adcsample_t adc_tps;
 
 extern icucnt_t last_period;
@@ -13,6 +11,8 @@ uint8_t id_rpm,id_tps;
 
 uint16_t inj_data_ms_perc[cdata][cdata];
 uint16_t ign_data_off_deg[cdata][cdata];
+adcsample_t adc_tps_close,adc_tps_full;
+uint16_t inj_ms_base,inj_open_time;
 
 //uint16_t inj_data_ms_perc[cdata][cdata]={
   
@@ -47,6 +47,9 @@ uint16_t ign_data_off_deg[cdata][cdata];
   //{	10,	15,	15,	18,	20,	22,	25,	25,	27,	27,	30,	30}, // 90
   //{	10,	15,	15,	18,	20,	22,	25,	25,	27,	27,	30,	30}  // 100
 //};
+
+//adcsample_t adc_tps_close=195,adc_tps_full=1395;
+//uint16_t inj_ms_base=5,inj_open_time=200;
 
 uint16_t data_tps[cdata]={0,10,15,20,30,40,50,60,70,80,90,100};
 uint16_t data_rpm[cdata]={500,750,1000,1250,1500,2000,2500,3000,4000,5000,5500,6000};

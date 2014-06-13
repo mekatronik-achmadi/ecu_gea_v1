@@ -5,6 +5,8 @@ extern adcsample_t adc_tps_val,adc_tps_close,adc_tps_full;
 extern uint16_t inj_data_ms_perc[cdata][cdata];
 extern uint16_t ign_data_off_deg[cdata][cdata];
 
+extern uint16_t inj_ms_base,inj_open_time;
+
 Thread *shelltp = NULL;
 
 static void cmd_data(BaseSequentialStream *chp, int argc, char *argv[]) {
@@ -58,6 +60,32 @@ static void cmd_read_tps(BaseSequentialStream *chp, int argc, char *argv[]){
   return;
 }
 
+static void cmd_save_injec(BaseSequentialStream *chp, int argc, char *argv[]){
+  
+  if(argc!=2){
+    chprintf(chp,"bad commands");
+    return;
+  }
+  
+  inj_ms_base=atoi(argv[0]);
+  inj_open_time=atoi(argv[1]);
+  mem_injec(SAVE);
+  
+  return;
+}
+
+static void cmd_read_injec(BaseSequentialStream *chp, int argc, char *argv[]){
+  (void)argv;
+  
+  if(argc>0){
+    chprintf(chp,"bad commands");
+    return;
+  }
+  
+  mem_injec(READ);
+  chprintf(chp,"%i,%i\n",inj_ms_base,inj_open_time);
+  return;
+}
 
 static void cmd_save_inj(BaseSequentialStream *chp, int argc, char *argv[]){
   if(argc!=3){
@@ -141,7 +169,7 @@ static void cmd_iac_up(BaseSequentialStream *chp, int argc, char *argv[]){
     return;
   }
   Iac_CW(atoi(argv[0]));
-  chprintf(chp,"iac up for %3i",atoi(argv[0]));
+  chprintf(chp,"iac up for %i\n",atoi(argv[0]));
   return;
 }
 
@@ -151,7 +179,7 @@ static void cmd_iac_down(BaseSequentialStream *chp, int argc, char *argv[]){
     return;
   }
   Iac_CCW(atoi(argv[0]));
-  chprintf(chp,"iac down for %3i",atoi(argv[0]));
+  chprintf(chp,"iac down for %i\n",atoi(argv[0]));
   return;
 }
 
@@ -161,6 +189,9 @@ static const ShellCommand commands[] = {
   {"tps_val",cmd_tps_val},
   {"save_tps",cmd_save_tps},
   {"read_tps",cmd_read_tps},
+  
+  {"save_injec",cmd_save_injec},
+  {"read_injec",cmd_read_injec},
   
   {"save_inj",cmd_save_inj},
   {"read_inj",cmd_read_inj},

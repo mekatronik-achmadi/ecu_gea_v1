@@ -15,6 +15,7 @@
 #define TPSRead_target 4
 #define INJRead_target 5
 #define IGNRead_target 6
+#define INJECRead_target 7
 
 #define cdata 12
 
@@ -70,6 +71,16 @@ private slots:
     void on_btnIgnGet_clicked();
 
     void ign_get(QString strInput);
+
+    void on_btnInjecSet_clicked();
+
+    void on_btnInjecGet_clicked();
+
+    void injec_get(QString strInput);
+
+    void on_btnIACUp_clicked();
+
+    void on_btnIACDown_clicked();
 
 private:
     Ui::interface *ui;

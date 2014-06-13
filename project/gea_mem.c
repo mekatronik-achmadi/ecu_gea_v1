@@ -5,6 +5,7 @@ volatile uint16_t VirtAddVarTab[NumbOfVar];
 extern adcsample_t adc_tps_close,adc_tps_full;
 extern uint16_t inj_data_ms_perc[cdata][cdata];
 extern uint16_t ign_data_off_deg[cdata][cdata];
+extern uint16_t inj_ms_base,inj_open_time;
 
 void Mem_Setup(void){
   FLASH_Unlock();
@@ -33,6 +34,16 @@ void mem_adc(uint8_t mode){
   }
 }
 
+void mem_injec(uint8_t mode){
+  if(mode==0){
+    save_mem(e_inj_ms_base,inj_ms_base);
+    save_mem(e_inj_open_time,inj_open_time);
+  }
+  else if(mode==1){
+    inj_ms_base=read_mem(e_inj_ms_base);
+    inj_open_time=read_mem(e_inj_open_time);
+  }
+}
 
 void mem_inj_data(uint8_t idx_tps,uint8_t idx_rpm,uint8_t mode){
   int i,j;
@@ -64,6 +75,8 @@ void mem_ign_data(uint8_t idx_tps,uint8_t idx_rpm,uint8_t mode){
 
 void mem_load_all(void){
   mem_adc(READ);
+  
+  mem_injec(READ);
   
   uint8_t i,j;
   
