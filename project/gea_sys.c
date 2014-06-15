@@ -104,7 +104,7 @@ void inj_ign(void){
 	  
     for(i=0;i<cdata-2;i++){
         if((adc_tps>=data_tps[i])&&(adc_tps<data_tps[i+1])){
-	  tps_index=i;
+            tps_index=i;
         }
     };
 
