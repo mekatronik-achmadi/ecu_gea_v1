@@ -15,6 +15,9 @@ void Pal_Setup(void){
   palSetPadMode(GPIOB,IACB,PAL_MODE_OUTPUT_PUSHPULL);
   palSetPadMode(GPIOB,IACC,PAL_MODE_OUTPUT_PUSHPULL);
   palSetPadMode(GPIOB,IACD,PAL_MODE_OUTPUT_PUSHPULL); 
+
+  palSetPadMode(GPIOB,output,PAL_MODE_OUTPUT_PUSHPULL);
+  out_active;
 }
 
 //maju

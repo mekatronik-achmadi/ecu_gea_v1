@@ -2133,7 +2133,7 @@ design rules under a new name.</description>
 <attribute name="OC_FARNELL" value="1021127" x="158.115" y="-2.159" size="1.778" layer="27" display="off"/>
 </element>
 <element name="TR-ICU" library="transistor" package="SOT23-BEC" value="" x="62.992" y="32.893" rot="MR0"/>
-<element name="R-ICU1" library="resistor" package="R0805" value="1k" x="63.119" y="26.162" rot="MR180"/>
+<element name="R-ICU1" library="resistor" package="R0805" value="330" x="63.119" y="26.162" rot="MR180"/>
 <element name="R-ICU2" library="resistor" package="R0805" value="4k7" x="63.119" y="28.067" rot="MR180"/>
 <element name="C-ICU" library="resistor" package="C0805" value="100n" x="63.119" y="29.972" rot="MR0"/>
 <element name="R-ICU4" library="resistor" package="R0805" value="330" x="73.279" y="30.353" rot="MR180"/>
@@ -2182,11 +2182,11 @@ design rules under a new name.</description>
 <element name="D-V12" library="diode" package="SMB" value="" x="88.011" y="12.446" rot="MR180"/>
 <element name="C-VCC" library="resistor" package="PANASONIC_D" value="100u/25v" x="91.567" y="56.769" rot="MR0"/>
 <element name="TR-ICU1" library="transistor" package="SOT23-BEC" value="" x="58.42" y="33.02" rot="MR0"/>
-<element name="R-ICU6" library="resistor" package="R0805" value="1k" x="58.547" y="26.162" rot="MR180"/>
+<element name="R-ICU6" library="resistor" package="R0805" value="330" x="58.547" y="26.162" rot="MR180"/>
 <element name="R-ICU7" library="resistor" package="R0805" value="4k7" x="58.42" y="29.972" rot="MR180"/>
 <element name="C-ICU1" library="resistor" package="C0805" value="100n" x="58.42" y="28.067" rot="MR0"/>
 <element name="TR-VDDO" library="transistor" package="SOT23-BEC" value="" x="65.024" y="60.452" rot="MR0"/>
-<element name="R-VDDO" library="resistor" package="R0805" value="1k" x="67.691" y="58.039" rot="MR90"/>
+<element name="R-VDDO" library="resistor" package="R0805" value="330" x="67.691" y="58.039" rot="MR90"/>
 <element name="OKA1" library="optocoupler" package="DIL04" value="PC817" x="39.878" y="61.468" rot="R90">
 <attribute name="OC_NEWARK" value="97K7059" x="39.878" y="61.468" size="1.778" layer="27" rot="R90" display="off"/>
 <attribute name="MPN" value="PC817X4J000F" x="39.878" y="61.468" size="1.778" layer="27" rot="R90" display="off"/>

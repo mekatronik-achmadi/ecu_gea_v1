@@ -20158,7 +20158,7 @@ http://www.st.com&lt;p&gt;
 <part name="D-V33" library="diode" deviceset="ZENER-DIODE" device="SMB" value="3v6"/>
 <part name="OK-ICU" library="optocoupler" deviceset="H11L*M" device="" technology="1"/>
 <part name="TR-ICU" library="transistor" deviceset="*-NPN-" device="SOT23-BEC" technology="MMBT3904LT1"/>
-<part name="R-ICU1" library="resistor" deviceset="R-EU_" device="R0805" value="1k"/>
+<part name="R-ICU1" library="resistor" deviceset="R-EU_" device="R0805" value="330"/>
 <part name="R-ICU2" library="resistor" deviceset="R-EU_" device="R0805" value="4k7"/>
 <part name="C-ICU" library="resistor" deviceset="C-EU" device="C0805" value="100n"/>
 <part name="R-ICU4" library="resistor" deviceset="R-EU_" device="R0805" value="330"/>
@@ -20202,11 +20202,11 @@ http://www.st.com&lt;p&gt;
 <part name="D-V12" library="diode" deviceset="DIODE-" device="SMB"/>
 <part name="C-VCC" library="resistor" deviceset="CPOL-EU" device="D" value="100u/25v"/>
 <part name="TR-ICU1" library="transistor" deviceset="*-NPN-" device="SOT23-BEC" technology="MMBT3904LT1"/>
-<part name="R-ICU6" library="resistor" deviceset="R-EU_" device="R0805" value="1k"/>
+<part name="R-ICU6" library="resistor" deviceset="R-EU_" device="R0805" value="330"/>
 <part name="R-ICU7" library="resistor" deviceset="R-EU_" device="R0805" value="4k7"/>
 <part name="C-ICU1" library="resistor" deviceset="C-EU" device="C0805" value="100n"/>
 <part name="TR-VDDO" library="transistor" deviceset="*-NPN-" device="SOT23-BEC" technology="MMBT3904LT1"/>
-<part name="R-VDDO" library="resistor" deviceset="R-EU_" device="R0805" value="1k"/>
+<part name="R-VDDO" library="resistor" deviceset="R-EU_" device="R0805" value="330"/>
 <part name="OKA1" library="optocoupler" deviceset="PC817" device=""/>
 <part name="OKA2" library="optocoupler" deviceset="PC817" device=""/>
 <part name="OKA3" library="optocoupler" deviceset="PC817" device=""/>

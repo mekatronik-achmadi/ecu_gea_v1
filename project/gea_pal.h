@@ -7,6 +7,7 @@
 #define inj_2 8
 #define ign_1 7
 #define ign_2 6
+#define output 6
 
 #define no_pulse palTogglePad(GPIOA,led)
 
@@ -21,6 +22,8 @@
 
 #define off_ign2 palSetPad(GPIOC,ign_2)
 #define on_ign2 palClearPad(GPIOC,ign_2)
+
+#define out_active palSetPad(GPIOB,output)
 
 #define interval chThdSleepMilliseconds(6);
 

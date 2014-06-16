@@ -327,19 +327,6 @@
         </rect>
        </property>
       </widget>
-      <widget class="QLineEdit" name="txtTPSFull">
-       <property name="enabled">
-        <bool>false</bool>
-       </property>
-       <property name="geometry">
-        <rect>
-         <x>70</x>
-         <y>50</y>
-         <width>51</width>
-         <height>23</height>
-        </rect>
-       </property>
-      </widget>
       <widget class="QLineEdit" name="txtTPSOff">
        <property name="enabled">
         <bool>false</bool>
@@ -347,7 +334,7 @@
        <property name="geometry">
         <rect>
          <x>70</x>
-         <y>20</y>
+         <y>50</y>
          <width>51</width>
          <height>23</height>
         </rect>
@@ -396,6 +383,19 @@
        </property>
        <property name="text">
         <string>Down</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="txtTPSFull">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="geometry">
+        <rect>
+         <x>70</x>
+         <y>20</y>
+         <width>51</width>
+         <height>23</height>
+        </rect>
        </property>
       </widget>
      </widget>
