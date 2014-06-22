@@ -65,6 +65,7 @@ interface::interface(QWidget *parent) :
     connect(my_port,SIGNAL(readyRead()),this,SLOT(read_data()));
     connect(tmrdatareq,SIGNAL(timeout()),this,SLOT(req_data()));
 
+//    ui->tblInj->setCurrentCell(11,2);
 }
 
 interface::~interface()
@@ -245,20 +246,23 @@ void interface::on_btnMonitor_clicked()
 void interface::parse_data(QString strInput){
     QStringList strVal= strInput.split(",");
 
-    if(strVal.count()<8){return;}
+    if(strVal.count()<9){return;}
 
     val_rpm=strVal[0].toInt();
     val_tps=strVal[1].toInt();
     val_inj=strVal[2].toInt();
     val_ign=strVal[4].toInt();
-    id_rpm=strVal[6].toInt();
-    id_tps=strVal[7].toInt();
+    id_rpm=strVal[7].toInt();
+    id_tps=strVal[8].toInt();
 
     val_map=0;
     val_temp=0;
 
-    ui->tblInj->setCurrentCell(id_rpm,id_tps);
-    ui->tblIgn->setCurrentCell(id_rpm,id_tps);
+//    ui->tblInj->setCurrentCell(id_rpm,id_tps);
+//    ui->tblIgn->setCurrentCell(id_rpm,id_tps);
+
+    ui->tblInj->setCurrentCell(id_tps,id_rpm);
+    ui->tblIgn->setCurrentCell(id_tps,id_rpm);
 }
 
 void interface::on_btnTPSFullGet_clicked()
