@@ -178,8 +178,8 @@ void interface::read_data(){
 
     if(ui->txtCommData->toPlainText().isEmpty()){return;}
 
-    if(data_target==TPSFull_target){ui->txtTPSFull->setText(ui->txtCommData->toPlainText());}
-    else if(data_target==TPSOff_target){ui->txtTPSOff->setText(ui->txtCommData->toPlainText());}
+    if(data_target==TPSFull_target){tps_full(ui->txtCommData->toPlainText());}
+    else if(data_target==TPSOff_target){tps_off(ui->txtCommData->toPlainText());}
     else if(data_target==TPSRead_target){tps_get(ui->txtCommData->toPlainText());}
     else if(data_target==parse_target){parse_data(ui->txtCommData->toPlainText());}
     else if(data_target==INJRead_target){inj_get(ui->txtCommData->toPlainText());}
@@ -218,6 +218,9 @@ void interface::on_btnMonitor_clicked()
         ui->btnIACUp->setEnabled(false);
         ui->btnIACDown->setEnabled(false);
         ui->btnOpen->setEnabled(false);
+        ui->actionSave->setEnabled(false);
+        ui->actionLoad->setEnabled(false);
+        ui->actionDefault->setEnabled(false);
     }
     else{
         tmrdatareq->stop();
@@ -240,6 +243,9 @@ void interface::on_btnMonitor_clicked()
         ui->btnIACUp->setEnabled(true);
         ui->btnIACDown->setEnabled(true);
         ui->btnOpen->setEnabled(true);
+        ui->actionSave->setEnabled(true);
+        ui->actionLoad->setEnabled(true);
+        ui->actionDefault->setEnabled(true);
     }
 }
 
@@ -258,9 +264,6 @@ void interface::parse_data(QString strInput){
     val_map=0;
     val_temp=0;
 
-//    ui->tblInj->setCurrentCell(id_rpm,id_tps);
-//    ui->tblIgn->setCurrentCell(id_rpm,id_tps);
-
     ui->tblInj->setCurrentCell(id_tps,id_rpm);
     ui->tblIgn->setCurrentCell(id_tps,id_rpm);
 }
@@ -273,12 +276,22 @@ void interface::on_btnTPSFullGet_clicked()
     my_port->write(tps_req_data);
 }
 
+void interface::tps_full(QString strInput){
+    int tpsfull=strInput.toInt();
+    ui->txtTPSFull->setText(QString::number(tpsfull));
+}
+
 void interface::on_btnTPSOffGet_clicked()
 {
     ui->txtCommData->clear();
     data_target=TPSOff_target;
     QByteArray tps_req_data="tps_val\n";
     my_port->write(tps_req_data);
+}
+
+void interface::tps_off(QString strInput){
+    int tpsoff=strInput.toInt();
+    ui->txtTPSOff->setText(QString::number(tpsoff));
 }
 
 void interface::on_btnTPSSet_clicked()
@@ -572,4 +585,135 @@ void interface::on_btnIACDown_clicked()
     iac_down_req_data += QString::number(IACval).toUtf8();
     iac_down_req_data += "\n";
     my_port->write(iac_down_req_data);
+}
+
+void interface::on_actionSave_triggered()
+{
+    QString filename;
+    QString filesave=QFileDialog::getSaveFileName(this,"save data","","Gea Tuning data (*.gea)");
+
+    if(filesave.isEmpty()){return;}
+
+    QStringList filenameparse = filesave.split(".");
+
+    if(filenameparse.count()==2){
+        filename=filenameparse[0];
+    }
+    else if(filenameparse.count()==1){
+        filename=filesave;
+    }
+
+    filename += ".gea";
+
+    QFile filestream(filename);
+    if(!filestream.open(QFile::WriteOnly|QFile::Text|QFile::Truncate)){
+        QMessageBox::critical(this,"Failed","File failed to save");
+        return;
+    }
+
+    QTextStream filewrite(&filestream);
+
+    filewrite<<ui->txtTPSOff->text()<<","<<ui->txtTPSFull->text()<<endl;
+    filestream.flush();
+
+    filewrite<<ui->txtBaseMs->text()<<","<<ui->txtOpenMs->text()<<endl;
+    filestream.flush();
+
+    int i;
+
+    for(i=0;i<cdata;i++){
+        filewrite<<ui->tblInj->item(i,0)->text()<<",";
+        filewrite<<ui->tblInj->item(i,1)->text()<<",";
+        filewrite<<ui->tblInj->item(i,2)->text()<<",";
+        filewrite<<ui->tblInj->item(i,3)->text()<<",";
+        filewrite<<ui->tblInj->item(i,4)->text()<<",";
+        filewrite<<ui->tblInj->item(i,5)->text()<<",";
+        filewrite<<ui->tblInj->item(i,6)->text()<<",";
+        filewrite<<ui->tblInj->item(i,7)->text()<<",";
+        filewrite<<ui->tblInj->item(i,8)->text()<<",";
+        filewrite<<ui->tblInj->item(i,9)->text()<<",";
+        filewrite<<ui->tblInj->item(i,10)->text()<<",";
+        filewrite<<ui->tblInj->item(i,11)->text()<<endl;
+        filestream.flush();
+    }
+
+    for(i=0;i<cdata;i++){
+        filewrite<<ui->tblIgn->item(i,0)->text()<<",";
+        filewrite<<ui->tblIgn->item(i,1)->text()<<",";
+        filewrite<<ui->tblIgn->item(i,2)->text()<<",";
+        filewrite<<ui->tblIgn->item(i,3)->text()<<",";
+        filewrite<<ui->tblIgn->item(i,4)->text()<<",";
+        filewrite<<ui->tblIgn->item(i,5)->text()<<",";
+        filewrite<<ui->tblIgn->item(i,6)->text()<<",";
+        filewrite<<ui->tblIgn->item(i,7)->text()<<",";
+        filewrite<<ui->tblIgn->item(i,8)->text()<<",";
+        filewrite<<ui->tblIgn->item(i,9)->text()<<",";
+        filewrite<<ui->tblIgn->item(i,10)->text()<<",";
+        filewrite<<ui->tblIgn->item(i,11)->text()<<endl;
+        filestream.flush();
+    }
+
+    filestream.close();
+}
+
+void interface::on_actionLoad_triggered()
+{
+    QString filename;
+    QString fileopen=QFileDialog::getOpenFileName(this,"load data","","Gea Tuning data (*.gea)");
+    if(fileopen.isEmpty()){return;}
+    filename=fileopen;
+
+    QFile filestream(filename);
+
+    if(!filestream.open(QFile::ReadOnly|QFile::Text)){
+        QMessageBox::critical(this,"Failed","File failed to open");
+        return;
+    }
+
+    QTextStream fileread(&filestream);
+    ui->txtCommData->clear();
+
+    while(!fileread.atEnd()){
+        QString received=fileread.readAll();
+        ui->txtCommData->insertPlainText(received);
+    }
+
+    filestream.flush();
+    filestream.close();
+
+    QStringList datalines = ui->txtCommData->toPlainText().split("\n");
+
+    QString tpsline= datalines[0];
+    QStringList lsttpsline = tpsline.split(",");
+    ui->txtTPSOff->setText(lsttpsline[0]);
+    ui->txtTPSFull->setText(lsttpsline[1]);
+
+    QString injecline = datalines[1];
+    QStringList lstinjecline = injecline.split(",");
+    ui->txtBaseMs->setText(lstinjecline[0]);
+    ui->txtOpenMs->setText(lstinjecline[1]);
+
+    int i,j;
+
+    for(i=0;i<cdata;i++){
+        QString injline = datalines[2+i];
+        QStringList lstinjline = injline.split(",");
+        for(j=0;j<cdata;j++){
+            QTableWidgetItem* tbl_item = new QTableWidgetItem();
+            tbl_item->setText(lstinjline[j]);
+            ui->tblInj->setItem(i,j,tbl_item);
+        }
+    }
+
+    for(i=0;i<cdata;i++){
+        QString ignline = datalines[14+i];
+        QStringList lstignline = ignline.split(",");
+        for(j=0;j<cdata;j++){
+            QTableWidgetItem* tbl_item = new QTableWidgetItem();
+            tbl_item->setText(lstignline[j]);
+            ui->tblIgn->setItem(i,j,tbl_item);
+        }
+    }
+
+    ui->txtCommData->clear();
 }

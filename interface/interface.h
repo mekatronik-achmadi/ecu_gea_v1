@@ -2,7 +2,10 @@
 #define INTERFACE_H
 
 #include <QMainWindow>
+#include <QFileDialog>
 #include <QMessageBox>
+#include <QFile>
+#include <QTextStream>
 #include <QTime>
 #include <QTimer>
 #include <QtSerialPort/QSerialPort>
@@ -50,7 +53,11 @@ private slots:
 
     void on_btnTPSFullGet_clicked();
 
+    void tps_full(QString strInput);
+
     void on_btnTPSOffGet_clicked();
+
+    void tps_off(QString strInput);
 
     void on_btnTPSSet_clicked();
 
@@ -81,6 +88,10 @@ private slots:
     void on_btnIACUp_clicked();
 
     void on_btnIACDown_clicked();
+
+    void on_actionSave_triggered();
+
+    void on_actionLoad_triggered();
 
 private:
     Ui::interface *ui;
