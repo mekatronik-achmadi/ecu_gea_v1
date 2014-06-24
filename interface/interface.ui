@@ -399,6 +399,25 @@
        </property>
       </widget>
      </widget>
+     <widget class="QLabel" name="lblLogoITS">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>210</y>
+        <width>691</width>
+        <height>331</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap resource="gambar.qrc">:/logo/logo-its-biru-transparan.png</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="tabTPSRPM">
      <attribute name="title">
@@ -826,6 +845,8 @@
   </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
- <resources/>
+ <resources>
+  <include location="gambar.qrc"/>
+ </resources>
  <connections/>
 </ui>
