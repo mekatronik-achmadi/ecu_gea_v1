@@ -3955,9 +3955,9 @@ Es handelt sich hierbei um AK500 in horizontaler Ausführung.&lt;p&gt;
 <label x="12.7" y="83.82" size="1.778" layer="95"/>
 </segment>
 <segment>
-<pinref part="Q-INJ1" gate="G$1" pin="G"/>
-<wire x1="48.26" y1="96.52" x2="43.18" y2="96.52" width="0.1524" layer="91"/>
-<label x="43.18" y="93.98" size="1.778" layer="95"/>
+<pinref part="Q-PUMP" gate="G$1" pin="G"/>
+<wire x1="116.84" y1="96.52" x2="111.76" y2="96.52" width="0.1524" layer="91"/>
+<label x="109.22" y="93.98" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="INJ2" class="0">
@@ -3967,9 +3967,9 @@ Es handelt sich hierbei um AK500 in horizontaler Ausführung.&lt;p&gt;
 <label x="12.7" y="81.28" size="1.778" layer="95"/>
 </segment>
 <segment>
-<pinref part="Q-INJ2" gate="G$1" pin="G"/>
-<wire x1="66.04" y1="96.52" x2="60.96" y2="96.52" width="0.1524" layer="91"/>
-<label x="60.96" y="93.98" size="1.778" layer="95"/>
+<pinref part="Q-IGN2" gate="G$1" pin="G"/>
+<wire x1="99.06" y1="96.52" x2="93.98" y2="96.52" width="0.1524" layer="91"/>
+<label x="91.44" y="93.98" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="IGN1" class="0">
@@ -3991,9 +3991,9 @@ Es handelt sich hierbei um AK500 in horizontaler Ausführung.&lt;p&gt;
 <label x="12.7" y="76.2" size="1.778" layer="95"/>
 </segment>
 <segment>
-<pinref part="Q-IGN2" gate="G$1" pin="G"/>
-<wire x1="99.06" y1="96.52" x2="93.98" y2="96.52" width="0.1524" layer="91"/>
-<label x="91.44" y="93.98" size="1.778" layer="95"/>
+<pinref part="Q-INJ2" gate="G$1" pin="G"/>
+<wire x1="66.04" y1="96.52" x2="60.96" y2="96.52" width="0.1524" layer="91"/>
+<label x="60.96" y="93.98" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="PUMP" class="0">
@@ -4003,9 +4003,9 @@ Es handelt sich hierbei um AK500 in horizontaler Ausführung.&lt;p&gt;
 <label x="12.7" y="73.66" size="1.778" layer="95"/>
 </segment>
 <segment>
-<pinref part="Q-PUMP" gate="G$1" pin="G"/>
-<wire x1="116.84" y1="96.52" x2="111.76" y2="96.52" width="0.1524" layer="91"/>
-<label x="109.22" y="93.98" size="1.778" layer="95"/>
+<pinref part="Q-INJ1" gate="G$1" pin="G"/>
+<wire x1="48.26" y1="96.52" x2="43.18" y2="96.52" width="0.1524" layer="91"/>
+<label x="43.18" y="93.98" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="V12" class="0">
@@ -4074,49 +4074,21 @@ Es handelt sich hierbei um AK500 in horizontaler Ausführung.&lt;p&gt;
 <label x="63.5" y="71.12" size="1.778" layer="95"/>
 </segment>
 </net>
-<net name="INJO1" class="0">
+<net name="INJ1O" class="0">
 <segment>
-<pinref part="R-INJ1" gate="G$1" pin="1"/>
-<pinref part="Q-INJ1" gate="G$1" pin="D"/>
-<wire x1="53.34" y1="106.68" x2="53.34" y2="104.14" width="0.1524" layer="91"/>
-<wire x1="53.34" y1="104.14" x2="58.42" y2="104.14" width="0.1524" layer="91"/>
-<label x="58.42" y="104.14" size="1.778" layer="95"/>
+<pinref part="R-PUMP" gate="G$1" pin="1"/>
+<pinref part="Q-PUMP" gate="G$1" pin="D"/>
+<wire x1="121.92" y1="106.68" x2="121.92" y2="104.14" width="0.1524" layer="91"/>
+<wire x1="121.92" y1="104.14" x2="127" y2="104.14" width="0.1524" layer="91"/>
+<label x="127" y="104.14" size="1.778" layer="95"/>
 </segment>
 <segment>
-<pinref part="OUT" gate="-1" pin="KL"/>
-<wire x1="60.96" y1="63.5" x2="68.58" y2="63.5" width="0.1524" layer="91"/>
-<label x="63.5" y="63.5" size="1.778" layer="95"/>
-</segment>
-</net>
-<net name="INJO2" class="0">
-<segment>
-<pinref part="R-INJ2" gate="G$1" pin="1"/>
-<pinref part="Q-INJ2" gate="G$1" pin="D"/>
-<wire x1="71.12" y1="106.68" x2="71.12" y2="104.14" width="0.1524" layer="91"/>
-<wire x1="71.12" y1="104.14" x2="76.2" y2="104.14" width="0.1524" layer="91"/>
-<label x="76.2" y="104.14" size="1.778" layer="95"/>
-</segment>
-<segment>
-<pinref part="OUT" gate="-2" pin="KL"/>
-<wire x1="60.96" y1="58.42" x2="68.58" y2="58.42" width="0.1524" layer="91"/>
-<label x="63.5" y="58.42" size="1.778" layer="95"/>
+<pinref part="OUT" gate="-5" pin="KL"/>
+<wire x1="60.96" y1="43.18" x2="68.58" y2="43.18" width="0.1524" layer="91"/>
+<label x="63.5" y="43.18" size="1.778" layer="95"/>
 </segment>
 </net>
-<net name="IGNO1" class="0">
-<segment>
-<pinref part="R-IGN1" gate="G$1" pin="1"/>
-<pinref part="Q-IGN1" gate="G$1" pin="D"/>
-<wire x1="86.36" y1="106.68" x2="86.36" y2="104.14" width="0.1524" layer="91"/>
-<wire x1="86.36" y1="104.14" x2="91.44" y2="104.14" width="0.1524" layer="91"/>
-<label x="91.44" y="104.14" size="1.778" layer="95"/>
-</segment>
-<segment>
-<pinref part="OUT" gate="-3" pin="KL"/>
-<wire x1="60.96" y1="53.34" x2="68.58" y2="53.34" width="0.1524" layer="91"/>
-<label x="63.5" y="53.34" size="1.778" layer="95"/>
-</segment>
-</net>
-<net name="IGNO2" class="0">
+<net name="INJ2O" class="0">
 <segment>
 <pinref part="R-IGN2" gate="G$1" pin="1"/>
 <pinref part="Q-IGN2" gate="G$1" pin="D"/>
@@ -4130,18 +4102,46 @@ Es handelt sich hierbei um AK500 in horizontaler Ausführung.&lt;p&gt;
 <label x="63.5" y="48.26" size="1.778" layer="95"/>
 </segment>
 </net>
-<net name="PUMPO" class="0">
+<net name="IGN1O" class="0">
 <segment>
-<pinref part="R-PUMP" gate="G$1" pin="1"/>
-<pinref part="Q-PUMP" gate="G$1" pin="D"/>
-<wire x1="121.92" y1="106.68" x2="121.92" y2="104.14" width="0.1524" layer="91"/>
-<wire x1="121.92" y1="104.14" x2="127" y2="104.14" width="0.1524" layer="91"/>
-<label x="127" y="104.14" size="1.778" layer="95"/>
+<pinref part="R-IGN1" gate="G$1" pin="1"/>
+<pinref part="Q-IGN1" gate="G$1" pin="D"/>
+<wire x1="86.36" y1="106.68" x2="86.36" y2="104.14" width="0.1524" layer="91"/>
+<wire x1="86.36" y1="104.14" x2="91.44" y2="104.14" width="0.1524" layer="91"/>
+<label x="91.44" y="104.14" size="1.778" layer="95"/>
 </segment>
 <segment>
-<pinref part="OUT" gate="-5" pin="KL"/>
-<wire x1="60.96" y1="43.18" x2="68.58" y2="43.18" width="0.1524" layer="91"/>
-<label x="63.5" y="43.18" size="1.778" layer="95"/>
+<pinref part="OUT" gate="-3" pin="KL"/>
+<wire x1="60.96" y1="53.34" x2="68.58" y2="53.34" width="0.1524" layer="91"/>
+<label x="63.5" y="53.34" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="IGN2O" class="0">
+<segment>
+<pinref part="R-INJ2" gate="G$1" pin="1"/>
+<pinref part="Q-INJ2" gate="G$1" pin="D"/>
+<wire x1="71.12" y1="106.68" x2="71.12" y2="104.14" width="0.1524" layer="91"/>
+<wire x1="71.12" y1="104.14" x2="76.2" y2="104.14" width="0.1524" layer="91"/>
+<label x="76.2" y="104.14" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="OUT" gate="-2" pin="KL"/>
+<wire x1="60.96" y1="58.42" x2="68.58" y2="58.42" width="0.1524" layer="91"/>
+<label x="63.5" y="58.42" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="PUMPO" class="0">
+<segment>
+<pinref part="OUT" gate="-1" pin="KL"/>
+<wire x1="60.96" y1="63.5" x2="68.58" y2="63.5" width="0.1524" layer="91"/>
+<label x="63.5" y="63.5" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="R-INJ1" gate="G$1" pin="1"/>
+<pinref part="Q-INJ1" gate="G$1" pin="D"/>
+<wire x1="53.34" y1="106.68" x2="53.34" y2="104.14" width="0.1524" layer="91"/>
+<wire x1="53.34" y1="104.14" x2="58.42" y2="104.14" width="0.1524" layer="91"/>
+<label x="58.42" y="104.14" size="1.778" layer="95"/>
 </segment>
 </net>
 </nets>
