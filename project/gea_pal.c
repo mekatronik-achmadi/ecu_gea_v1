@@ -3,6 +3,18 @@
 extern adcsample_t adc_tps;
 extern icucnt_t rpm;
 
+static WORKING_AREA(wa_pumpThread, 128);
+static msg_t pumpThread(void *arg) {
+  (void)arg;
+  while (TRUE) {
+    on_pump;
+    chThdSleepMilliseconds(10000);
+    off_pump;
+    chThdSleepMilliseconds(10000);
+  }
+  return 0;
+}
+
 void Pal_Setup(void){
   palSetPadMode(GPIOA,led,PAL_MODE_OUTPUT_PUSHPULL);
   
@@ -16,6 +28,10 @@ void Pal_Setup(void){
   palSetPadMode(GPIOB,IACC,PAL_MODE_OUTPUT_PUSHPULL);
   palSetPadMode(GPIOB,IACD,PAL_MODE_OUTPUT_PUSHPULL); 
 
+  palSetPadMode(GPIOB,pump,PAL_MODE_OUTPUT_PUSHPULL);
+  chThdCreateStatic(wa_pumpThread, sizeof(wa_pumpThread), NORMALPRIO, pumpThread, NULL);
+
+  chThdSleepMilliseconds(500);
   palSetPadMode(GPIOB,output,PAL_MODE_OUTPUT_PUSHPULL);
   out_active;
 }
