@@ -122,6 +122,8 @@ void inj_ign(void){
   
     inj_ms_perc=inj_data_ms_perc[tps_index][rpm_index];
     ign_off_deg=ign_data_off_deg[tps_index][rpm_index];
+
+    if(adc_clt<temp_limit){inj_ms_base=inj_ms_base-inj_temp;}
     
     inj_ms_tick=(inj_ms_perc*inj_ms_base)+inj_open_time;
     
@@ -184,11 +186,8 @@ void engine_ovf(void){
 
 void data_send(void){
 
-//  rpm=1500;adc_tps=50;inj_ms_perc=97;inj_ms_tick=0;ign_off_deg=30;one_deg_tick=0;id_rpm=5;id_tps=5;
-//   chprintf((BaseSequentialStream *)&SD1,
-//    "%i,%i,%i,%i,%i,%i,%i,%i,%i,%i,%i,%i\r\n",
-//   rpm,adc_tps,inj_ms_perc,inj_ms_tick,ign_off_deg,ign_off_tick,one_deg_tick,id_rpm,id_tps,inj_open_time,inj_ms_base,adc_clt
-//  );
-
-   chprintf((BaseSequentialStream *)&SD1,"%i\n\r",adc_clt);
+   chprintf((BaseSequentialStream *)&SD1,
+    "%i,%i,%i,%i,%i,%i,%i,%i,%i,%i,%i,%i\r\n",
+   rpm,adc_tps,inj_ms_perc,inj_ms_tick,ign_off_deg,ign_off_tick,one_deg_tick,id_rpm,id_tps,inj_open_time,inj_ms_base,adc_clt
+  );
 }

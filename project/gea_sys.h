@@ -16,6 +16,9 @@
 #define all_tooth 23
 #define deg_per_tooth 15
 
+#define temp_limit 200
+#define inj_temp 2
+
 #define cdata 12
 
 //#define engine_vol 650

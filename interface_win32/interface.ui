@@ -53,127 +53,32 @@
        </property>
        <item>
         <property name="text">
-         <string>COM1</string>
+         <string>ttyUSB0</string>
         </property>
        </item>
        <item>
         <property name="text">
-         <string>COM2</string>
+         <string>ttyUSB1</string>
         </property>
        </item>
        <item>
         <property name="text">
-         <string>COM3</string>
+         <string>ttyATK0</string>
         </property>
        </item>
        <item>
         <property name="text">
-         <string>COM4</string>
+         <string>ttyATK1</string>
         </property>
        </item>
        <item>
         <property name="text">
-         <string>COM5</string>
+         <string>ttyACM0</string>
         </property>
        </item>
        <item>
         <property name="text">
-         <string>COM6</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>COM7</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>COM8</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>COM9</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>COM10</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>COM11</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>COM12</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>COM13</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>COM14</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>COM15</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>COM16</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>COM17</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>COM18</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>COM19</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>COM20</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>COM21</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>COM22</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>COM23</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>COM24</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>COM25</string>
+         <string>ttyACM1</string>
         </property>
        </item>
       </widget>
@@ -895,7 +800,7 @@
      <x>0</x>
      <y>0</y>
      <width>766</width>
-     <height>21</height>
+     <height>20</height>
     </rect>
    </property>
   </widget>

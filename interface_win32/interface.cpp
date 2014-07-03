@@ -13,7 +13,7 @@ int id_tps;
 
 int defaultTPS[2]={195,1395};
 
-int defaultInjec[2]={5,200};
+int defaultInjec[2]={7,200};
 
 //int defaultInj[cdata][cdata]={
 //  {	44,	26,	13,	 4,	 0,	 0,	 0,	 0,	 0,	 0,	 0,	 0},
@@ -109,7 +109,7 @@ void interface::on_actionInfoQt_triggered()
 
 void interface::on_btnOpen_clicked()
 {
-    QString dev_name="";
+    QString dev_name="/dev/";
     dev_name += ui->cmbPort->currentText();
 
     if(ui->btnOpen->text()=="Open"){
@@ -268,7 +268,7 @@ void interface::on_btnMonitor_clicked()
 void interface::parse_data(QString strInput){
     QStringList strVal= strInput.split(",");
 
-    if(strVal.count()<9){return;}
+    if(strVal.count()<12){return;}
 
     val_rpm=strVal[0].toInt();
     val_tps=strVal[1].toInt();
@@ -276,9 +276,9 @@ void interface::parse_data(QString strInput){
     val_ign=strVal[4].toInt();
     id_rpm=strVal[7].toInt();
     id_tps=strVal[8].toInt();
+    val_temp=(600-strVal[11].toInt())/4;
 
     val_map=0;
-    val_temp=0;
 
     ui->tblInj->setCurrentCell(id_tps,id_rpm);
     ui->tblIgn->setCurrentCell(id_tps,id_rpm);
