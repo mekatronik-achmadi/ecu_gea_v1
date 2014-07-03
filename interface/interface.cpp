@@ -197,7 +197,7 @@ void interface::read_data(){
     if(data_target==TPSFull_target){tps_full(ui->txtCommData->toPlainText());}
     else if(data_target==TPSOff_target){tps_off(ui->txtCommData->toPlainText());}
     else if(data_target==TPSRead_target){tps_get(ui->txtCommData->toPlainText());}
-    else if(data_target==parse_target){parse_data(ui->txtCommData->toPlainText());}
+//    else if(data_target==parse_target){parse_data(ui->txtCommData->toPlainText());}
     else if(data_target==INJRead_target){inj_get(ui->txtCommData->toPlainText());}
     else if(data_target==IGNRead_target){ign_get(ui->txtCommData->toPlainText());}
     else if(data_target==INJECRead_target){injec_get(ui->txtCommData->toPlainText());}

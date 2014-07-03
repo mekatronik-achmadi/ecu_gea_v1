@@ -20365,7 +20365,7 @@ Source: www.cypressindustries.com</description>
 <part name="R-MAT1" library="resistor" deviceset="R-EU_" device="R1206" value="1k"/>
 <part name="R-MAT2" library="resistor" deviceset="R-EU_" device="R1206" value="1k"/>
 <part name="C-MAT" library="resistor" deviceset="C-EU" device="C1206" value="100n"/>
-<part name="R-CLT1" library="resistor" deviceset="R-EU_" device="R1206" value="1k"/>
+<part name="R-CLT1" library="resistor" deviceset="R-EU_" device="R1206" value="4k7"/>
 <part name="R-CLT2" library="resistor" deviceset="R-EU_" device="R1206" value="1k"/>
 <part name="C-CLT" library="resistor" deviceset="C-EU" device="C1206" value="100n"/>
 <part name="ANALOG" library="con-ptr500" deviceset="AK300/6" device=""/>
