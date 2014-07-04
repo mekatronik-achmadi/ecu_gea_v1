@@ -277,7 +277,7 @@ void interface::parse_data(QString strInput){
     id_rpm=strVal[7].toInt();
     id_tps=strVal[8].toInt();
     
-    if(strVal[11]<600){val_temp=(600-strVal[11].toInt())/4;}
+    if(strVal[11].toInt()<600){val_temp=(600-strVal[11].toInt())/4;}
     else{val_temp=0;}
     
     val_map=0;
