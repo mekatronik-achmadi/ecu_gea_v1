@@ -6,11 +6,20 @@ extern icucnt_t rpm;
 static WORKING_AREA(wa_pumpThread, 128);
 static msg_t pumpThread(void *arg) {
   (void)arg;
+
+  on_pump;
+  chThdSleepMilliseconds(5000);
+
   while (TRUE) {
     on_pump;
-    chThdSleepMilliseconds(10000);
-    off_pump;
-    chThdSleepMilliseconds(10000);
+    chThdSleepMilliseconds(5000);
+    if(rpm==0){
+        chThdSleepMilliseconds(5000);
+    }
+    else{
+        on_pump;
+        chThdSleepMilliseconds(5000);
+    }
   }
   return 0;
 }
@@ -31,7 +40,7 @@ void Pal_Setup(void){
   palSetPadMode(GPIOB,pump,PAL_MODE_OUTPUT_PUSHPULL);
   chThdCreateStatic(wa_pumpThread, sizeof(wa_pumpThread), NORMALPRIO, pumpThread, NULL);
 
-  chThdSleepMilliseconds(500);
+  chThdSleepMilliseconds(10000);
   palSetPadMode(GPIOB,output,PAL_MODE_OUTPUT_PUSHPULL);
   out_active;
 }

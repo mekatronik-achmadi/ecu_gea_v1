@@ -34,7 +34,7 @@
 //sistem tanpa pullup
 //#define out_active palSetPad(GPIOB,output)
 //sistem dengan pullup
-#define out_active palClearPad(GPIOB,output)
+#define out_active palSetPad(GPIOB,output)
 
 #define interval chThdSleepMilliseconds(6);
 
