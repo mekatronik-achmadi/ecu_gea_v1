@@ -1,5 +1,6 @@
 <RCC>
     <qresource prefix="/logo">
         <file>logo-its-biru-transparan.png</file>
+        <file>batik.png</file>
     </qresource>
 </RCC>
