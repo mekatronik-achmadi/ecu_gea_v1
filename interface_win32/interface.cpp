@@ -82,6 +82,8 @@ interface::interface(QWidget *parent) :
     connect(tmrdatareq,SIGNAL(timeout()),this,SLOT(req_data()));
 
 //    ui->tblInj->setCurrentCell(11,2);
+
+    ui->tabAll->setCurrentIndex(2);
 }
 
 interface::~interface()

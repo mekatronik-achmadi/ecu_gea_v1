@@ -3,6 +3,7 @@
 
 #include <qframe.h>
 #include <qpalette.h>
+#include <qlabel.h>
 
 #include <qtimer.h>
 

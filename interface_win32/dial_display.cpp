@@ -6,6 +6,8 @@
 #include "dial_display.h"
 #include "interface.h"
 
+#define sizedial 250
+
 extern int val_tps;
 extern int val_rpm;
 extern int val_inj;
@@ -44,6 +46,14 @@ dial_display::dial_display(QWidget *parent ):
 
     QwtDial *dialmap= createDial( 6 );
     layout->addWidget( dialmap, 1, 2 );
+
+    QLabel *lblbg= new QLabel(this);
+    lblbg->setPixmap(QPixmap(QString::fromUtf8(":/logo/batik.png")));
+    lblbg->setFixedWidth(750);
+    lblbg->setFixedHeight(700);
+    lblbg->setScaledContents(true);
+    layout->addWidget(lblbg,0,0);
+    lblbg->lower();
 
     int i;
     for ( i = 0; i < layout->columnCount(); i++ ){layout->setColumnStretch( i, 1 );}
@@ -97,6 +107,10 @@ QwtDial* dial_display::createDial(int pos){
         d_tps->setScale( 0.0, 100.0 );
         d_tps->scaleDraw()->setPenWidth( 2 );
         d_tps->setLabel("Throttle");
+
+        d_tps->setFixedHeight(sizedial);
+        d_tps->setFixedWidth(sizedial);
+
         dial = d_tps;
         break;
     }
@@ -107,6 +121,10 @@ QwtDial* dial_display::createDial(int pos){
         d_rpm->setScale( 0.0, 6000.0 );
         d_rpm->scaleDraw()->setPenWidth( 2 );
         d_rpm->setLabel("RPM");
+
+        d_rpm->setFixedHeight(sizedial);
+        d_rpm->setFixedWidth(sizedial);
+
         dial = d_rpm;
         break;
     }
@@ -117,6 +135,10 @@ QwtDial* dial_display::createDial(int pos){
         d_inj->setScale( 0.0, 150.0 );
         d_inj->scaleDraw()->setPenWidth( 2 );
         d_inj->setLabel("Injection");
+
+        d_inj->setFixedHeight(sizedial);
+        d_inj->setFixedWidth(sizedial);
+
         dial = d_inj;
         break;
     }
@@ -127,6 +149,10 @@ QwtDial* dial_display::createDial(int pos){
         d_ign->setScale( 0.0, 45.0 );
         d_ign->scaleDraw()->setPenWidth( 2 );
         d_ign->setLabel("Ignition");
+
+        d_ign->setFixedHeight(sizedial);
+        d_ign->setFixedWidth(sizedial);
+
         dial = d_ign;
         break;
     }
@@ -137,6 +163,10 @@ QwtDial* dial_display::createDial(int pos){
         d_temp->setScale( 0.0, 150.0 );
         d_temp->scaleDraw()->setPenWidth( 2 );
         d_temp->setLabel("Temperature");
+
+        d_temp->setFixedHeight(sizedial);
+        d_temp->setFixedWidth(sizedial);
+
         dial = d_temp;
         break;
     }
@@ -147,6 +177,10 @@ QwtDial* dial_display::createDial(int pos){
         d_map->setScale( 0.0, 150.0 );
         d_map->scaleDraw()->setPenWidth( 2 );
         d_map->setLabel("MAP");
+
+        d_map->setFixedHeight(sizedial);
+        d_map->setFixedWidth(sizedial);
+
         dial = d_map;
         break;
     }

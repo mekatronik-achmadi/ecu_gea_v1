@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>interface</string>
+   <string>Sinjai Engine Interface v0.1</string>
   </property>
   <widget class="QWidget" name="centralWidget">
    <widget class="QTabWidget" name="tabAll">
@@ -22,6 +22,9 @@
       <width>741</width>
       <height>601</height>
      </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
     </property>
     <property name="currentIndex">
      <number>0</number>
@@ -418,6 +421,30 @@
        <bool>true</bool>
       </property>
      </widget>
+     <widget class="QLabel" name="lblBatik1">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>-25</y>
+        <width>741</width>
+        <height>601</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap resource="gambar.qrc">:/logo/batik.png</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <zorder>lblBatik1</zorder>
+     <zorder>groupBox</zorder>
+     <zorder>groupBox_2</zorder>
+     <zorder>groupBox_3</zorder>
+     <zorder>lblLogoITS</zorder>
     </widget>
     <widget class="QWidget" name="tabTPSRPM">
      <attribute name="title">
@@ -791,6 +818,34 @@
        <string>Get</string>
       </property>
      </widget>
+     <widget class="QLabel" name="lblBatik2">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>741</width>
+        <height>571</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap resource="gambar.qrc">:/logo/batik.png</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <zorder>lblBatik2</zorder>
+     <zorder>tblInj</zorder>
+     <zorder>label_2</zorder>
+     <zorder>tblIgn</zorder>
+     <zorder>label_3</zorder>
+     <zorder>btnInjSet</zorder>
+     <zorder>btnInjGet</zorder>
+     <zorder>btnIgnSet</zorder>
+     <zorder>btnIgnGet</zorder>
     </widget>
    </widget>
   </widget>
