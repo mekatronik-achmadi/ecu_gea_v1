@@ -111,8 +111,10 @@ void interface::on_actionInfoQt_triggered()
 
 void interface::on_btnOpen_clicked()
 {
-    QString dev_name="/dev/";
-    dev_name += ui->cmbPort->currentText();
+//    QString dev_name="/dev/";
+//    dev_name += ui->cmbPort->currentText();
+
+    QString dev_name= ui->cmbPort->currentText();
 
     if(ui->btnOpen->text()=="Open"){
 

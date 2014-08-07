@@ -27,7 +27,7 @@
      <bool>false</bool>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="tabBasic">
      <attribute name="title">
@@ -56,32 +56,127 @@
        </property>
        <item>
         <property name="text">
-         <string>ttyUSB0</string>
+         <string>COM1</string>
         </property>
        </item>
        <item>
         <property name="text">
-         <string>ttyUSB1</string>
+         <string>COM2</string>
         </property>
        </item>
        <item>
         <property name="text">
-         <string>ttyATK0</string>
+         <string>COM3</string>
         </property>
        </item>
        <item>
         <property name="text">
-         <string>ttyATK1</string>
+         <string>COM4</string>
         </property>
        </item>
        <item>
         <property name="text">
-         <string>ttyACM0</string>
+         <string>COM5</string>
         </property>
        </item>
        <item>
         <property name="text">
-         <string>ttyACM1</string>
+         <string>COM6</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>COM7</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>COM8</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>COM9</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>COM10</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>COM11</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>COM12</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>COM13</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>COM14</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>COM15</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>COM16</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>COM17</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>COM18</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>COM19</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>COM20</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>COM21</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>COM22</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>COM23</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>COM24</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>COM25</string>
         </property>
        </item>
       </widget>
