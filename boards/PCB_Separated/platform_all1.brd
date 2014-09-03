@@ -2574,7 +2574,7 @@ design rules under a new name.</description>
 <element name="IC2" library="linear" package="TO252" value="7805DT" x="50.8" y="8.89" rot="MR90"/>
 <element name="C-V12" library="resistor" package="PANASONIC_D" value="100u/25v" x="60.96" y="7.62" rot="MR270"/>
 <element name="D-V12" library="diode" package="SMB" value="" x="58.42" y="15.24" rot="MR270"/>
-<element name="C-VCC" library="resistor" package="PANASONIC_D" value="100u/25v" x="43.18" y="8.89" rot="MR270"/>
+<element name="C-VCC" library="resistor" package="PANASONIC_D" value="100u/25v" x="41.91" y="8.89" rot="MR270"/>
 <element name="OK-INJ" library="optocoupler" package="DIL04" value="PC817" x="26.67" y="55.88" rot="R90">
 <attribute name="OC_NEWARK" value="97K7059" x="66.04" y="83.82" size="1.778" layer="27" rot="R90" display="off"/>
 <attribute name="MPN" value="PC817X4J000F" x="66.04" y="83.82" size="1.778" layer="27" rot="R90" display="off"/>
@@ -2760,8 +2760,6 @@ design rules under a new name.</description>
 <wire x1="48.26" y1="13.97" x2="48.26" y2="21.59" width="0.6096" layer="16"/>
 <wire x1="48.26" y1="21.59" x2="49.53" y2="22.86" width="0.6096" layer="16"/>
 <wire x1="49.53" y1="22.86" x2="49.6062" y2="22.86" width="0.6096" layer="16"/>
-<wire x1="43.18" y1="11.29" x2="43.18" y2="12.7" width="0.6096" layer="16"/>
-<wire x1="43.18" y1="12.7" x2="48.26" y2="12.7" width="0.6096" layer="16"/>
 <wire x1="48.26" y1="12.7" x2="48.895" y2="13.335" width="0.6096" layer="16"/>
 <wire x1="59.13" y1="46.37" x2="59.13" y2="45.01" width="0.3048" layer="16"/>
 <wire x1="59.13" y1="45.01" x2="59.69" y2="44.45" width="0.3048" layer="16"/>
@@ -2865,6 +2863,8 @@ design rules under a new name.</description>
 <wire x1="39.37" y1="74.93" x2="38.1" y2="74.93" width="0.3048" layer="16"/>
 <wire x1="38.1" y1="74.93" x2="33.02" y2="69.85" width="0.3048" layer="16"/>
 <wire x1="33.02" y1="69.85" x2="33.02" y2="68.58" width="0.3048" layer="16"/>
+<wire x1="48.26" y1="12.7" x2="41.91" y2="12.7" width="0.6096" layer="16"/>
+<wire x1="41.91" y1="12.7" x2="41.91" y2="11.29" width="0.6096" layer="16"/>
 </signal>
 <signal name="VDD">
 <contactref element="U1" pad="32"/>
@@ -3327,8 +3327,7 @@ design rules under a new name.</description>
 <contactref element="X3" pad="1"/>
 <contactref element="ANALOG" pad="1"/>
 <wire x1="45.88" y1="11.29" x2="46" y2="11.17" width="0.6096" layer="16"/>
-<wire x1="43.18" y1="6.49" x2="43.18" y2="7.62" width="0.6096" layer="16"/>
-<wire x1="43.18" y1="7.62" x2="44.45" y2="8.89" width="0.6096" layer="16"/>
+<wire x1="41.91" y1="6.49" x2="43.18" y2="7.62" width="0.6096" layer="16"/>
 <wire x1="44.45" y1="8.89" x2="45.72" y2="8.89" width="0.6096" layer="16"/>
 <wire x1="45.72" y1="8.89" x2="45.72" y2="10.89" width="0.6096" layer="16"/>
 <wire x1="45.72" y1="10.89" x2="46" y2="11.17" width="0.6096" layer="16"/>
@@ -3364,6 +3363,7 @@ design rules under a new name.</description>
 <wire x1="85.09" y1="49.53" x2="82.55" y2="52.07" width="0.6096" layer="16"/>
 <wire x1="82.55" y1="52.07" x2="81.5594" y2="52.07" width="0.6096" layer="16"/>
 <wire x1="81.5594" y1="52.07" x2="81.28" y2="51.7906" width="0.6096" layer="16"/>
+<wire x1="44.45" y1="8.89" x2="43.18" y2="7.62" width="0.6096" layer="16"/>
 </signal>
 <signal name="DP">
 <contactref element="IC1" pad="15"/>
@@ -3457,9 +3457,8 @@ design rules under a new name.</description>
 <wire x1="38.1" y1="3.81" x2="46.99" y2="3.81" width="0.6096" layer="16"/>
 <wire x1="46.99" y1="3.81" x2="46.99" y2="5.08" width="0.6096" layer="16"/>
 <wire x1="46.99" y1="5.08" x2="47.26" y2="5.35" width="0.6096" layer="16"/>
-<wire x1="46" y1="14.23" x2="42.17" y2="14.23" width="0.6096" layer="16"/>
-<wire x1="42.17" y1="14.23" x2="39.37" y2="11.43" width="0.6096" layer="16"/>
-<wire x1="39.37" y1="11.43" x2="39.37" y2="5.08" width="0.6096" layer="16"/>
+<wire x1="46" y1="14.23" x2="40.9" y2="14.23" width="0.6096" layer="16"/>
+<wire x1="39.37" y1="12.7" x2="39.37" y2="5.08" width="0.6096" layer="16"/>
 <wire x1="39.37" y1="5.08" x2="38.1" y2="3.81" width="0.6096" layer="16"/>
 <wire x1="60.96" y1="5.22" x2="60.96" y2="3.81" width="0.6096" layer="16"/>
 <wire x1="60.96" y1="3.81" x2="59.69" y2="2.54" width="0.6096" layer="16"/>
@@ -3477,6 +3476,7 @@ design rules under a new name.</description>
 <wire x1="12.7" y1="36.83" x2="13.97" y2="38.1" width="0.6096" layer="16"/>
 <wire x1="13.97" y1="38.1" x2="15.088" y2="38.1" width="0.6096" layer="16"/>
 <wire x1="15.088" y1="38.1" x2="15.24" y2="38.252" width="0.6096" layer="16"/>
+<wire x1="39.37" y1="12.7" x2="40.9" y2="14.23" width="0.6096" layer="16"/>
 </signal>
 <signal name="INJ">
 <contactref element="R-INJ2" pad="2"/>
