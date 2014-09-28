@@ -40,7 +40,7 @@ void Pal_Setup(void){
   palSetPadMode(GPIOB,pump,PAL_MODE_OUTPUT_PUSHPULL);
   chThdCreateStatic(wa_pumpThread, sizeof(wa_pumpThread), NORMALPRIO, pumpThread, NULL);
 
-  chThdSleepMilliseconds(10000);
+//   chThdSleepMilliseconds(10000);
   palSetPadMode(GPIOB,output,PAL_MODE_OUTPUT_PUSHPULL);
   out_active;
 }
